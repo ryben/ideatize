@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App Prototyper</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            display: flex;
+            height: 80%;
+        }
+
+        .split {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #codeInput, #appPreview {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #dragger {
+            background: #ccc;
+            width: 5px;
+            cursor: ew-resize;
+        }
+
+        #assistant {
+            position: relative;
+            height: 20%;
+            background: #f1f1f1;
+            overflow: hidden;
+        }
+
+        #chatDisplay {
+            height: calc(100% - 30px);
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        #chatInput {
+            width: 100%;
+            border: none;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="codeArea" class="split">
+            <textarea id="codeInput" placeholder="Write your HTML code here..."></textarea>
+        </div>
+        <div id="dragger"></div>
+        <div id="appArea" class="split">
+            <iframe id="appPreview"></iframe>
+        </div>
+    </div>
+    <div id="assistant">
+        <div id="chatDisplay"></div>
+        <input type="text" id="chatInput" placeholder="Type your message...">
+    </div>
+
+    <script>
+        window.onload = function() {
+            const dragger = document.getElementById('dragger');
+            const codeArea = document.getElementById('codeArea');
+            const appPreview = document.getElementById('appPreview');
+            const codeInput = document.getElementById('codeInput');
+            const chatInput = document.getElementById('chatInput');
+            const chatDisplay = document.getElementById('chatDisplay');
+
+            let isDragging = false;
+
+            dragger.onmousedown = function(e) {
+                isDragging = true;
+                document.onmousemove = function(e) {
+                    const percentage = (e.pageX / window.innerWidth) * 100;
+                    codeArea.style.width = percentage + '%';
+                    appPreview.style.width = (100 - percentage) + '%';
+                }
+            }
+
+            document.onmouseup = function(e) {
+                isDragging = false;
+                document.onmousemove = null;
+            }
+
+            codeInput.onkeyup = function() {
+                appPreview.srcdoc = codeInput.value;
+            }
+
+            chatInput.onkeypress = function(e) {
+                if (e.key === 'Enter') {
+                    const msg = chatInput.value;
+                    if (msg) {
+                        chatDisplay.innerHTML += '<div>' + msg + '</div>';
+                        chatInput.value = '';
+                    }
+                    e.preventDefault();
+                }
+            }
+        };
+    </script>
+</body>
+</html>
