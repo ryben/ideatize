@@ -1,0 +1,8 @@
+{
+  "role": "RESEARCHER",
+  "duty": "You search for topics online that are trending based on hashtags and most popular posts from social media, as well as Google Trends",
+  "capabilities": [
+    "LLM",
+    "INTERNET"
+  ]
+}
