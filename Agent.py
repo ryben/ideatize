@@ -1,22 +1,26 @@
 import os
 from openai import OpenAI
 
+from AgentRole import AgentRole
+
 
 class Agent:
 
-    def init(self):
-        pass
+    def __init__(self, role: AgentRole, instructions: str, capabilities, name=""):
+        self.role = role
+        self.instructions = instructions
+        self.capabilities = capabilities
+        self.name = name
 
-    def go(self):
+    def start(self):
 
         client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
         # Step 1: Create an Assistant
         my_assistant = client.beta.assistants.create(
             model="gpt-4-1106-preview",
-            instructions="You are a researcher. You search the web for the currently trending topics, focusing on today or "
-                         "this week's trending stuff.",
-            name="Trending Researcher",
+            instructions=self.instructions,
+            name=self.name
         )
 
         # Step 2: Create a Thread
@@ -26,14 +30,14 @@ class Agent:
         my_thread_message = client.beta.threads.messages.create(
             thread_id=my_thread.id,
             role="user",
-            content="Tell me what's trending right now",
+            content=self.instructions,
         )
 
         # Step 4: Run the Assistant
         my_run = client.beta.threads.runs.create(
             thread_id=my_thread.id,
             assistant_id=my_assistant.id,
-            instructions="Please address the user as Rey."
+            instructions="follow instructions"
         )
 
         # Step 5: Periodically retrieve the Run to check on its status to see if it has moved to completed
