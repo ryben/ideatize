@@ -1,11 +1,15 @@
-from agency.AgentRole import AgentRole
-from prompt.ResearchPrompt import ResearchPrompt
+from prompt.Prompt import Prompt
 from tasking.Task import Task
+from tasking.graph.TaskingGraph import TaskingGraph
 
 
 class TaskFactory:
-    # TODO("Design mapping on a config file")
-    @staticmethod
-    def from_source(source):
-        if isinstance(source, ResearchPrompt):
-            return Task(AgentRole.ARCHITECT, source.content)
+    def __init__(self, tasking_graph: TaskingGraph):
+        pass
+
+    def from_source(self, source):
+        # TODO("Instantiate task based on Prompt type")
+        return Task("ARCHITECT", source.content)
+
+    def create(self, assignee: str, content: str):
+        return Task(assignee, content)

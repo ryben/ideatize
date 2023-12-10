@@ -9,5 +9,5 @@ from tasking.graph.Link import Link
 
 @dataclass
 class TaskingGraph:
-    links: MutableList[Link]
-    cycles: MutableList[CycleLink]
+    links: List[Link]
+    cycles: List[CycleLink]

@@ -11,9 +11,11 @@ class Executor:
         self.task_manager = TaskManager()
         self.file_manager = FileManager()
         self.tasking_graph = self.file_manager.load_tasking_graph(project)
-        self.agent_manager = AgentManager(self.task_manager, self.tasking_graph)
+        self.agent_manager = AgentManager(self.task_manager, self.tasking_graph, self.file_manager)
+        self.task_factory = TaskFactory(self.tasking_graph)
 
-    def start(self, prompt: Prompt):
-        task = TaskFactory.from_source(prompt)
+    def start(self, prompt: Prompt = None):
+        task = self.task_factory.create("ARCHITECT", prompt.content)
         self.task_manager.push_task(task)
+
         self.agent_manager.start()

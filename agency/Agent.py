@@ -2,12 +2,10 @@ import os
 
 from openai import OpenAI
 
-from agency.AgentRole import AgentRole
-
 
 class Agent:
 
-    def __init__(self, role: AgentRole, instructions: str, capabilities, alias=""):
+    def __init__(self, role: str, instructions: str, capabilities, alias=""):
         self.role = role
         self.instructions = instructions
         self.capabilities = capabilities
