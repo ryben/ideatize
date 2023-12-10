@@ -1,15 +1,22 @@
-from agency.AgentManager import AgentManager
+import traceback
+
+from Executor import Executor
+from Project import Project
 from prompt.ResearchPrompt import ResearchPrompt
-from tasking.TaskFactory import TaskFactory
-from tasking.TaskManager import TaskManager
 
-user_input = input("What app do you want to create?\n> ")
-prompt = ResearchPrompt(user_input)
 
-task = TaskFactory.from_source(prompt)
+def main():
+    project = Project("sample")
+    try:
+        executor = Executor(project)
+        user_input = input("What app do you want to create?\n> ")
+        executor.start(ResearchPrompt(user_input))
+    except Exception as e:
+        print(e)
+        traceback.print_exc()
 
-task_manager = TaskManager()
-task_manager.push_task(task)
 
-agent_manager = AgentManager(task_manager)
-agent_manager.start()
+main()
+
+
+

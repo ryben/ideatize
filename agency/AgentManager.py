@@ -1,11 +1,13 @@
 from agency.Agent import Agent
 from agency.AgentRole import AgentRole
 from tasking.TaskManager import TaskManager
+from tasking.graph.TaskingGraph import TaskingGraph
 
 
 class AgentManager:
-    def __init__(self, task_manager: TaskManager):
+    def __init__(self, task_manager: TaskManager, tasking_graph: TaskingGraph):
         self.task_manager = task_manager
+        self.tasking_graph = tasking_graph
 
     def start(self):
         while self.task_manager.has_tasks():

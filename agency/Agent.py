@@ -7,11 +7,11 @@ from agency.AgentRole import AgentRole
 
 class Agent:
 
-    def __init__(self, role: AgentRole, instructions: str, capabilities, name=""):
+    def __init__(self, role: AgentRole, instructions: str, capabilities, alias=""):
         self.role = role
         self.instructions = instructions
         self.capabilities = capabilities
-        self.name = name
+        self.alias = alias
 
     def start(self):
 
@@ -21,7 +21,7 @@ class Agent:
         my_assistant = client.beta.assistants.create(
             model="gpt-4-1106-preview",
             instructions=self.instructions,
-            name=self.name
+            name=self.alias
         )
 
         # Step 2: Create a Thread

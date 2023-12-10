@@ -40,7 +40,7 @@ def submit_tool_outputs(thread_id, run_id, tools_to_call):
     for tool in tools_to_call:
         output = None
         tool_call_id = tool.id
-        function_name = tool.function.name
+        function_name = tool.function.alias
         function_args = tool.function.arguments
 
         if function_name == "tavily_search":
