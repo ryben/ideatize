@@ -9,8 +9,8 @@ from tasking.TaskManager import TaskManager
 class Executor:
     def __init__(self, project: Project):
         self.task_manager = TaskManager()
-        self.file_manager = FileManager()
-        self.tasking_graph = self.file_manager.load_tasking_graph(project)
+        self.file_manager = FileManager(project)
+        self.tasking_graph = self.file_manager.load_tasking_graph()
         self.agent_manager = AgentManager(self.task_manager, self.tasking_graph, self.file_manager)
         self.task_factory = TaskFactory(self.tasking_graph)
 

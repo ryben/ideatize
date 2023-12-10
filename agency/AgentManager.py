@@ -15,4 +15,4 @@ class AgentManager:
         while self.task_manager.has_tasks():
             task = self.task_manager.pop_task()
             agent = AgentFactory(self.file_manager).create_agent(task)
-            agent.start()  # TODO("Run async")
+            # agent.start()  # TODO("Run async")
