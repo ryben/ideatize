@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Prompt import Prompt
+from prompt.Prompt import Prompt
 
 
 @dataclass

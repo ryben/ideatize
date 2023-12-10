@@ -1,6 +1,6 @@
 from typing import List
 
-from Task import Task
+from tasking.Task import Task
 
 
 class TaskManager:

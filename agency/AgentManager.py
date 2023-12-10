@@ -1,6 +1,6 @@
-from Agent import Agent
-from AgentRole import AgentRole
-from TaskManager import TaskManager
+from agency.Agent import Agent
+from agency.AgentRole import AgentRole
+from tasking.TaskManager import TaskManager
 
 
 class AgentManager:
@@ -15,6 +15,6 @@ class AgentManager:
 
     def create_agent(self, task) -> Agent:
         # TODO("Instantiate agent based on which one the task is for")
-        if task.for_agent_role == AgentRole.RESEARCHER:
+        if task.for_agent_role == AgentRole.ARCHITECT:
             # Stub
             return Agent(task.for_agent_role, "Research about current trends in Philippines", [], "Researcher")

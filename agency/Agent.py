@@ -1,7 +1,8 @@
 import os
+
 from openai import OpenAI
 
-from AgentRole import AgentRole
+from agency.AgentRole import AgentRole
 
 
 class Agent:

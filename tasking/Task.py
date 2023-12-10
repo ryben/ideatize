@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from AgentRole import AgentRole
+from agency.AgentRole import AgentRole
 
 
 @dataclass
