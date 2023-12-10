@@ -1,0 +1,37 @@
+{
+  "links": [
+    {
+      "RESEARCH_ANALYST": "BUSINESS_ANALYST"
+    },
+    {
+      "RESEARCH_ANALYST": "BUSINESS_ANALYST"
+    },
+    {
+      "BUSINESS_ANALYST": "PRODUCT_MANAGER"
+    },
+    {
+      "PRODUCT_MANAGER": "ARCHITECT"
+    },
+    {
+      "ARCHITECT": "DEVELOPMENT_CYCLE"
+    },
+    {
+      "DEVELOPMENT_CYCLE": "PUBLISHER"
+    }
+  ],
+  "cycles": [
+    {
+      "DEVELOPMENT_CYCLE": [
+        {
+          "DEVELOPER": "CODE_REVIEWER"
+        },
+        {
+          "CODE_REVIEWER": "UNIT_TESTER"
+        },
+        {
+          "UNIT_TESTER": "INTEGRATION_TESTER"
+        }
+      ]
+    }
+  ]
+}
