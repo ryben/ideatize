@@ -10,9 +10,8 @@ class Executor:
     def __init__(self, project: Project):
         self.task_manager = TaskManager()
         self.file_manager = FileManager(project)
-        self.tasking_graph = self.file_manager.load_tasking_graph()
-        self.agent_manager = AgentManager(self.task_manager, self.tasking_graph, self.file_manager)
-        self.task_factory = TaskFactory(self.tasking_graph)
+        self.agent_manager = AgentManager(self.task_manager, self.file_manager)
+        self.task_factory = TaskFactory()
 
     def start(self, prompt: Prompt = None):
         task = self.task_factory.create("ARCHITECT", prompt.content)

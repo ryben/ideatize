@@ -3,7 +3,6 @@ import traceback
 from Executor import Executor
 from Project import Project
 from prompt.Prompt import Prompt
-from prompt.ResearchPrompt import ResearchPrompt
 
 
 def main():
