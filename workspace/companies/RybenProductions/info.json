@@ -1,0 +1,13 @@
+{
+  "name": "Ryben Productions",
+  "projects": [
+    "calculator"
+  ],
+  "roles": [
+    "Architect.json",
+    "Developer.json",
+    "ProductManager.json",
+    "Researcher.json",
+    "UiUxDesigner.json"
+  ]
+}
