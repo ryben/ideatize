@@ -1,0 +1,15 @@
+{
+  "role": "Researcher",
+  "inputs": [
+    "Go signal"
+  ],
+  "outputs": [
+    {
+      "name": "Researched Topic",
+      "instructions": "Search for topics online that are trending based on hashtags and most popular posts from social media, as well as Google Trends"
+    }
+  ],
+  "skills": [
+    "Internet search"
+  ]
+}

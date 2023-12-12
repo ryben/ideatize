@@ -1,0 +1,18 @@
+{
+  "role": "UI UX Designer",
+  "inputs": [
+    "App Feature Set"
+  ],
+  "outputs": [
+    {
+      "name": "UI Design",
+      "instructions": "Generate the UI Design of the app, written in HTML, beautified with CSS"
+    },
+    {
+      "name": "User Flow",
+      "instructions": "Define how the app will be used given its features, by creating a flow"
+    }
+  ],
+  "skills": [
+  ]
+}

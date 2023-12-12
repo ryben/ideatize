@@ -1,0 +1,14 @@
+{
+  "role": "ProductManager",
+  "inputs": [
+    "Researched Topic"
+  ],
+  "outputs": [
+    {
+      "name": "App Feature Set",
+      "instructions": "Given a researched topic, think of an app and define its features"
+    }
+  ],
+  "skills": [
+  ]
+}

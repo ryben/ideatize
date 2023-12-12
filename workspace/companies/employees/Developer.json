@@ -1,0 +1,14 @@
+{
+  "role": "Developer",
+  "inputs": [
+    "List of Classes with definitions"
+  ],
+  "outputs": [
+    {
+      "name": "App Prototype",
+      "instructions": "Implement the classes given the definitions"
+    }
+  ],
+  "skills": [
+  ]
+}
