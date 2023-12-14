@@ -1,7 +1,7 @@
 import traceback
 
 from Executor import Executor
-from Project import Project
+from company.Project import Project
 from prompt.Prompt import Prompt
 
 

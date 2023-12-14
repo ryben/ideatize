@@ -1,5 +1,5 @@
 from FileManager import FileManager
-from Project import Project
+from company.Project import Project
 from agency.AgentManager import AgentManager
 from prompt.Prompt import Prompt
 from tasking.TaskFactory import TaskFactory

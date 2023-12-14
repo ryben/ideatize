@@ -2,7 +2,7 @@ import logging
 import os.path
 from typing import List
 
-from Project import Project
+from company.Project import Project
 from agency.Agent import Agent
 from util import JsonUtil
 
