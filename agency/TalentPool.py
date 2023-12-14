@@ -1,5 +1,5 @@
 from agency.Agent import Agent
-from company.Task import Task
+from tasking.Task import Task
 
 
 class TalentPool:

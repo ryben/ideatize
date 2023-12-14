@@ -7,7 +7,8 @@ def main():
 
 
 def company_create_calculator():
-    Company("Calcutech").receive_prompt(Prompt("Create a calculator app"))
+    prompt = Prompt("Create a calculator app")
+    Company("Calcutech").receive_prompt(prompt)
 
 
 main()

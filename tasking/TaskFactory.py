@@ -1,11 +1,10 @@
-from company.Task import Task
+from tasking.Task import Task
+from tasking.TaskStatus import TaskStatus
 
 
 class TaskFactory:
-    def __init__(self):
-        pass
-
     @staticmethod
     def fromPrompt(prompt) -> Task:
         task = Task()
+        task.status = TaskStatus.READY
         return task

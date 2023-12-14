@@ -1,6 +1,6 @@
 from typing import List
 
-from company.Resource import Resource
+from resource.Resource import Resource
 
 
 class Task:

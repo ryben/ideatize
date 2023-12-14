@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 from typing import List
 
+
 from agency.TalentPool import TalentPool
-from company.Repository import Repository
-from company.SessionManager import SessionManager
 from company.Session import Session
-from company.TaskManager import TaskManager
+from company.SessionManager import SessionManager
 from company.TeamMember import TeamMember
+from resource.ResourceManager import ResourceManager
+from tasking.TaskManager import TaskManager
 
 
 @dataclass
@@ -21,4 +22,4 @@ class Project:
 
     def create_session(self) -> Session:
         task_manager = TaskManager()
-        return Session(task_manager, SessionManager(task_manager), Repository())
+        return Session(task_manager, SessionManager(task_manager), ResourceManager())

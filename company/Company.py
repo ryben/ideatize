@@ -2,8 +2,8 @@ from typing import List
 
 from company import Role
 from company.Project import Project
-from company.TaskFactory import TaskFactory
 from prompt.Prompt import Prompt
+from resource.ResourceFactory import ResourceFactory
 
 
 class Company:
@@ -25,7 +25,7 @@ class Company:
 
     def start_project_from_prompt(self, project: Project, prompt: Prompt):
         session = project.create_session()
-        session.task_manager.add_task(TaskFactory.fromPrompt(prompt))
+        session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
         session.session_manager.work()
 
     def create_project(self, name: str) -> Project:

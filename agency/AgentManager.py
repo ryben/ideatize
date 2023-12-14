@@ -1,6 +1,6 @@
 from FileManager import FileManager
 from agency.TalentPool import TalentPool
-from company.TaskManager import TaskManager
+from tasking.TaskManager import TaskManager
 
 
 class AgentManager:

@@ -1,5 +1,5 @@
-from agency.TalentPool import TalentPool
-from company.TaskManager import TaskManager
+from resource.Resource import Resource
+from tasking.TaskManager import TaskManager
 
 
 class SessionManager:
@@ -12,3 +12,9 @@ class SessionManager:
             task = self.task_manager.pop_task()
             # agent = TalentPool(self.file_manager).create_agent(task)
             # agent.start()  # TODO("Run async")
+
+    def generate_tasks_from_resource(self, resource: Resource):
+        for task in self.task_manager.tasks:
+            pass
+
+
