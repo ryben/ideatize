@@ -1,13 +1,15 @@
 from typing import List
 
-from tasking.Task import Task
+from company.Task import Task
 
 
 class TaskManager:
+    tasks: List[Task]
+
     def __init__(self):
         self.tasks = []
 
-    def push_task(self, task: Task):
+    def add_task(self, task: Task):
         self.tasks.append(task)
         self.sync()
 
