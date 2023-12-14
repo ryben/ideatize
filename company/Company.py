@@ -1,7 +1,8 @@
 from typing import List
 
-from company import Role
 from company.Project import Project
+from company.Role import Role
+from company.TeamMember import TeamMember
 from prompt.Prompt import Prompt
 from resource.ResourceFactory import ResourceFactory
 
@@ -19,6 +20,7 @@ class Company:
 
     def receive_prompt(self, prompt: Prompt):
         # TODO("Auto name the project based on the prompt")
+        print(f"Prompt received: {prompt}")
         project = self.create_project("Calculator")
         self.projects.append(project)
         self.start_project_from_prompt(project, prompt)
@@ -26,14 +28,20 @@ class Company:
     def start_project_from_prompt(self, project: Project, prompt: Prompt):
         session = project.create_session()
         session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
-        session.session_manager.work()
 
-    def create_project(self, name: str) -> Project:
+    def create_project(self, project_name: str) -> Project:
+        print(f"Creating project: {project_name}")
+
         # TODO("Load a company from file")
-        team_members = []
-        return Project(name, team_members)
 
+        team_members = self.assemble_team()
+        print(f"Project {project_name} team members: {team_members}")
 
-def of_name(self, name: str) -> Company:
-    # TODO("Load a company from file")
-    return Company(name)
+        return Project(project_name, team_members)
+
+    def assemble_team(self) -> List[TeamMember]:
+        # TODO("Replace dummy team member")
+        role = Role("Developer", ["Prompt"], ["Code"], [])
+        team_member = TeamMember("Rey", role)
+        return [team_member]
+

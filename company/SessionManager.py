@@ -1,20 +1,27 @@
+from typing import List
+
+from company.TeamMember import TeamMember
 from resource.Resource import Resource
 from tasking.TaskManager import TaskManager
 
 
 class SessionManager:
-    def __init__(self, task_manager: TaskManager):
+    def __init__(self, task_manager: TaskManager, team_members: List[TeamMember]):
         self.task_manager = task_manager
+        self.team_members = team_members
 
-    def work(self):
-        print(f"Tasks: {len(self.task_manager.tasks)}")
-        while self.task_manager.has_tasks():
-            task = self.task_manager.pop_task()
-            # agent = TalentPool(self.file_manager).create_agent(task)
-            # agent.start()  # TODO("Run async")
+    def process_resource(self, resource: Resource):
+        for member in self.team_members:
+            # Check among team members who needs the Resource
+            if resource.type in member.get_input_types():
+                task = member.get_task_needing_resource(resource)
+                task.add_resource(resource)
+                self.task_manager.add_task(task)
 
-    def generate_tasks_from_resource(self, resource: Resource):
-        for task in self.task_manager.tasks:
-            pass
+                print(f"Assigning task to {member.name}")
+                member.add_task(task)
+        self.make_team_members_work()
 
-
+    def make_team_members_work(self):
+        for member in self.team_members:
+            member.work()

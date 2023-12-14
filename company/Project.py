@@ -1,6 +1,4 @@
-from dataclasses import dataclass
 from typing import List
-
 
 from agency.TalentPool import TalentPool
 from company.Session import Session
@@ -10,7 +8,6 @@ from resource.ResourceManager import ResourceManager
 from tasking.TaskManager import TaskManager
 
 
-@dataclass
 class Project:
     name: str
     sessions: List[Session]
@@ -21,5 +18,11 @@ class Project:
         self.team_members = team_members
 
     def create_session(self) -> Session:
+        print(f"Creating session")
+
         task_manager = TaskManager()
-        return Session(task_manager, SessionManager(task_manager), ResourceManager())
+        session_manager = SessionManager(task_manager, self.team_members)
+        return Session(task_manager,
+                       session_manager,
+                       ResourceManager(session_manager),
+                       self.team_members)

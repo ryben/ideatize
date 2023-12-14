@@ -22,4 +22,4 @@ class TaskManager:
         return len(self.tasks) > 0
 
     def sync(self):
-        print(self.tasks)
+        pass
