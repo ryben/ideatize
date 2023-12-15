@@ -1,9 +1,10 @@
-import logging
+import json
 import os.path
-from typing import List
 
+from company.Company import Company
 from company.Project import Project
-from agency.Agent import Agent
+from company.Role import Role
+from company.model.CompanyInfo import CompanyInfo
 from util import JsonUtil
 
 
@@ -13,39 +14,71 @@ def get_working_directory():
 
 class FileManager:
     workspace_folder = "workspace"
-    agents_folder = "agents"
-    session_folder = "sessions"
-    tasking_graph_file = "tasking_graph.json"
+    workspace_path = os.path.join(get_working_directory(), workspace_folder)
+    workspace_file = "info.json"
+    companies_folder = "companies"
+    companies_path = os.path.join(workspace_path, companies_folder)
+    company_json_file = "info.json"
 
-    def __init__(self, project: Project):
-        self.project = project
+    @staticmethod
+    def load_workspace_json() -> str:
+        # Read from file
+        workspace_file_path = os.path.join(FileManager.workspace_path, FileManager.workspace_file)
+        f = open(workspace_file_path, "r")
+        workspace_json = f.read()
+        f.close()
 
+        return workspace_json
 
-    def load_agents(self) -> List[Agent]:
-        agents_path = os.path.join(get_working_directory(),
-                                   self.workspace_folder,
-                                   self.project.name,
-                                   self.agents_folder)
+    @staticmethod
+    def load_company(company_folder) -> Company:
+        company_json_file = os.path.join(FileManager.companies_path,
+                                         company_folder,
+                                         FileManager.company_json_file)
+        f = open(company_json_file, "r")
+        company_info: CompanyInfo
+        company_info = JsonUtil.from_json(f.read(), CompanyInfo)
+        f.close()
 
-        agents = []
+        company = Company(company_info.name)
+        company.roles = FileManager.load_roles(company_info.roles)
+        company.projects = FileManager.load_projects(company_info.roles)
 
-        if os.path.isdir(agents_path):
-            for file in os.listdir(agents_path):
-                file_path = os.path.join(agents_path, file)
+        return company
 
-                if os.path.isfile(file_path):
-                    f = open(file_path)
-                    try:
-                        agents.append(JsonUtil.from_json(f.read()))
-                        print(f"Loading agent {file}")
-                    except Exception as e:
-                        pass
+    @staticmethod
+    def load_projects(projects: list[str]) -> list[Project]:
+        return []
 
-        else:
-            logging.warning(f"Creating missing agents folder: {agents_path}")
-            os.mkdir(agents_path)
+    @staticmethod
+    def load_roles(roles: list[str]) -> list[Role]:
+        return []
 
-        return agents
+    @staticmethod
+    def save_company(company: Company):
+        # Construct the company folder and file path
+        company_folder = os.path.join(FileManager.workspace_path,
+                                      FileManager.companies_folder,
+                                      FileManager.generate_company_folder_name(company))
+        company_file = os.path.join(company_folder,
+                                    FileManager.company_json_file)
 
-    def save_task(self):
-        pass
+        # Create the company folder
+        if not os.path.exists(company_folder):
+            os.mkdir(company_folder)
+
+        # Build the JSON for the company
+        company_json = {
+            "name": company.name,
+            "projects": [],
+            "roles": []
+        }
+
+        # Write to file
+        f = open(company_file, "w")
+        f.write(json.dumps(company_json, indent=4))
+        f.close()
+
+    @staticmethod
+    def generate_company_folder_name(company):
+        return company.name.replace(" ", "")

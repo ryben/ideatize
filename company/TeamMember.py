@@ -3,6 +3,7 @@ from typing import List
 from company import Role
 from resource.Resource import Resource
 from tasking.Task import Task
+from tasking.TaskStatus import TaskStatus
 from util import Log
 
 
@@ -43,6 +44,7 @@ class TeamMember:
         self.tasks.append(task)
 
     def work(self):
-        Log.p(f"{self.name} working on task: {self.tasks}")
-        # TODO("Work on tasks")
-        pass
+        for task in self.tasks:
+            Log.p(f"{self.name}: setting task status to {TaskStatus.IN_PROGRESS}")
+            task.status = TaskStatus.IN_PROGRESS
+

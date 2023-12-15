@@ -1,4 +1,4 @@
-from company.Company import Company
+import Workspace
 from prompt.Prompt import Prompt
 
 
@@ -8,7 +8,10 @@ def main():
 
 def company_create_calculator():
     prompt = Prompt("Create a calculator app")
-    Company("Calcutech").receive_prompt(prompt)
+    workspace = Workspace.init()
+    print(f"Saved Companies: {workspace.companies}")
+
+    Workspace.init().get_or_create_company("Calcutech").receive_prompt(prompt)
 
 
 main()

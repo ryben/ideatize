@@ -17,10 +17,8 @@ class Company:
         self.name = name
         self.roles = []
         self.projects = []
-        pass
 
     def receive_prompt(self, prompt: Prompt):
-        # TODO("Auto name the project based on the prompt")
         Log.p(f"Prompt received: {prompt}")
         project = self.create_project("Calculator")
         self.projects.append(project)
@@ -33,8 +31,6 @@ class Company:
     def create_project(self, project_name: str) -> Project:
         Log.p(f"Creating project: {project_name}")
 
-        # TODO("Load a company from file")
-
         team_members = self.assemble_team()
         Log.p(f"Project {project_name} team members: {team_members}")
 
@@ -46,3 +42,7 @@ class Company:
         team_member = TeamMember("Rey", role)
         return [team_member]
 
+    @staticmethod
+    def of_name(name: str):
+        """Load company from file"""
+        new_company = Company(name)
