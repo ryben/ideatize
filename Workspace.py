@@ -26,7 +26,8 @@ class Workspace:
             return self.get_company(name)
         else:
             Log.p(f"Creating new company: {name}")
-            return self.create_company(name)
+            raise Exception("Creating company not yet implemented: Roles must be provided")
+            # return self.create_company(name)
 
     def is_company_existing(self, name: str):
         for company in self.companies:

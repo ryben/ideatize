@@ -22,9 +22,9 @@ class Company:
         Log.p(f"Prompt received: {prompt}")
         project = self.create_project("Calculator")
         self.projects.append(project)
-        self.start_project_from_prompt(project, prompt)
+        self.execute_project_from_prompt(project, prompt)
 
-    def start_project_from_prompt(self, project: Project, prompt: Prompt):
+    def execute_project_from_prompt(self, project: Project, prompt: Prompt):
         session = project.create_session()
         session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
 
