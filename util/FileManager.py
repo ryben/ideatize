@@ -3,9 +3,10 @@ import os.path
 
 from company.Company import Company
 from company.Project import Project
-from company.Role import Role
 from company.model.CompanyInfo import CompanyInfo
-from util import JsonUtil
+from company.model.OutputType import OutputType
+from company.model.Role import Role
+from util import JsonUtil, Log
 
 
 def get_working_directory():
@@ -19,16 +20,20 @@ class FileManager:
     companies_folder = "companies"
     companies_path = os.path.join(workspace_path, companies_folder)
     company_json_file = "info.json"
+    roles_folder = "roles"
 
     @staticmethod
     def load_workspace_json() -> str:
         # Read from file
         workspace_file_path = os.path.join(FileManager.workspace_path, FileManager.workspace_file)
-        f = open(workspace_file_path, "r")
-        workspace_json = f.read()
-        f.close()
+        return FileManager.read_file(workspace_file_path)
 
-        return workspace_json
+    @staticmethod
+    def read_file(filepath: str) -> str:
+        f = open(filepath, "r")
+        content = f.read()
+        f.close()
+        return content
 
     @staticmethod
     def load_company(company_folder) -> Company:
@@ -41,17 +46,40 @@ class FileManager:
         f.close()
 
         company = Company(company_info.name)
-        company.roles = FileManager.load_roles(company_info.roles)
+        company.roles = FileManager.load_roles(company_folder, company_info.roles)
         company.projects = FileManager.load_projects(company_info.roles)
 
         return company
 
     @staticmethod
-    def load_projects(projects: list[str]) -> list[Project]:
-        return []
+    def load_roles(company_folder: str, roles: list[str]) -> list[Role]:
+        loaded_roles: list[Role] = []
+
+        roles_folder_path = os.path.join(FileManager.companies_path,
+                                         company_folder,
+                                         FileManager.roles_folder)
+        for role_file in roles:
+            print(f"Loading role: {role_file}")
+            role_file_path = os.path.join(roles_folder_path, role_file)
+            role_json = FileManager.read_file(role_file_path)
+
+            # Parse Json TODO("Use library to parse nested json into object")
+            role_obj = JsonUtil.json_load(role_json)
+            role = Role(role_obj["role"])
+            role.input_types = role_obj["input_types"]
+            output_types: list[OutputType] = []
+            for output_type in role_obj["output_types"]:
+                new_output_type = OutputType(output_type["name"], output_type["instructions"])
+                output_types.append(new_output_type)
+            role.output_types = output_types
+            role.skills = role_obj["skills"]
+
+            loaded_roles.append(role)
+
+        return loaded_roles
 
     @staticmethod
-    def load_roles(roles: list[str]) -> list[Role]:
+    def load_projects(projects: list[str]) -> list[Project]:
         return []
 
     @staticmethod

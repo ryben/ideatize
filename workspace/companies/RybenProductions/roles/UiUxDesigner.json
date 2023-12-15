@@ -1,9 +1,9 @@
 {
   "role": "UI UX Designer",
-  "inputs": [
+  "input_types": [
     "App Feature Set"
   ],
-  "outputs": [
+  "output_types": [
     {
       "name": "UI Design",
       "instructions": "Generate the UI Design of the app, written in HTML, beautified with CSS"

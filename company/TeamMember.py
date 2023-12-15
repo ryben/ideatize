@@ -1,6 +1,6 @@
 from typing import List
 
-from company import Role
+from company.model import Role
 from resource.Resource import Resource
 from tasking.Task import Task
 from tasking.TaskStatus import TaskStatus

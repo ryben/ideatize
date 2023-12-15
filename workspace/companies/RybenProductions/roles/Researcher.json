@@ -1,9 +1,9 @@
 {
   "role": "Researcher",
-  "inputs": [
+  "input_types": [
     "Go signal"
   ],
-  "outputs": [
+  "output_types": [
     {
       "name": "Researched Topic",
       "instructions": "Search for topics online that are trending based on hashtags and most popular posts from social media, as well as Google Trends"

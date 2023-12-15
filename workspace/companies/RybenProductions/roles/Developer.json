@@ -1,14 +1,15 @@
 {
   "role": "Developer",
-  "inputs": [
+  "input_types": [
     "List of Classes with definitions"
   ],
-  "outputs": [
+  "output_types": [
     {
       "name": "App Prototype",
       "instructions": "Implement the classes given the definitions"
     }
   ],
   "skills": [
+    "coding"
   ]
 }

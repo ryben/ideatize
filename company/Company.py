@@ -1,7 +1,7 @@
 from typing import List
 
 from company.Project import Project
-from company.Role import Role
+from company.model.Role import Role
 from company.TeamMember import TeamMember
 from prompt.Prompt import Prompt
 from resource.ResourceFactory import ResourceFactory
@@ -38,8 +38,7 @@ class Company:
 
     def assemble_team(self) -> List[TeamMember]:
         # TODO("Replace dummy team member")
-        role = Role("Developer", ["Prompt"], ["Code"], [])
-        team_member = TeamMember("Rey", role)
+        team_member = TeamMember("Rey", self.roles[0])
         return [team_member]
 
     @staticmethod

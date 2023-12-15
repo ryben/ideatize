@@ -22,8 +22,10 @@ class Workspace:
 
     def get_or_create_company(self, name: str) -> Company:
         if self.is_company_existing(name):
+            Log.p(f"Getting existing company: {name}")
             return self.get_company(name)
         else:
+            Log.p(f"Creating new company: {name}")
             return self.create_company(name)
 
     def is_company_existing(self, name: str):
