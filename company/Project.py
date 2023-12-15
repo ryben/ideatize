@@ -6,6 +6,7 @@ from company.SessionManager import SessionManager
 from company.TeamMember import TeamMember
 from resource.ResourceManager import ResourceManager
 from tasking.TaskManager import TaskManager
+from util import Log
 
 
 class Project:
@@ -18,7 +19,7 @@ class Project:
         self.team_members = team_members
 
     def create_session(self) -> Session:
-        print(f"Creating session")
+        Log.p(f"Creating session")
 
         task_manager = TaskManager()
         session_manager = SessionManager(task_manager, self.team_members)

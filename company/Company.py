@@ -5,6 +5,7 @@ from company.Role import Role
 from company.TeamMember import TeamMember
 from prompt.Prompt import Prompt
 from resource.ResourceFactory import ResourceFactory
+from util import Log
 
 
 class Company:
@@ -20,7 +21,7 @@ class Company:
 
     def receive_prompt(self, prompt: Prompt):
         # TODO("Auto name the project based on the prompt")
-        print(f"Prompt received: {prompt}")
+        Log.p(f"Prompt received: {prompt}")
         project = self.create_project("Calculator")
         self.projects.append(project)
         self.start_project_from_prompt(project, prompt)
@@ -30,12 +31,12 @@ class Company:
         session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
 
     def create_project(self, project_name: str) -> Project:
-        print(f"Creating project: {project_name}")
+        Log.p(f"Creating project: {project_name}")
 
         # TODO("Load a company from file")
 
         team_members = self.assemble_team()
-        print(f"Project {project_name} team members: {team_members}")
+        Log.p(f"Project {project_name} team members: {team_members}")
 
         return Project(project_name, team_members)
 

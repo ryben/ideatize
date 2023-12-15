@@ -3,6 +3,7 @@ from typing import List
 from company.TeamMember import TeamMember
 from resource.Resource import Resource
 from tasking.TaskManager import TaskManager
+from util import Log
 
 
 class SessionManager:
@@ -18,7 +19,7 @@ class SessionManager:
                 task.add_resource(resource)
                 self.task_manager.add_task(task)
 
-                print(f"Assigning task to {member.name}")
+                Log.p(f"Assigning task to {member.name}")
                 member.add_task(task)
         self.make_team_members_work()
 

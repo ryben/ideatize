@@ -2,6 +2,7 @@ from typing import List
 
 from company.SessionManager import SessionManager
 from resource.Resource import Resource
+from util import Log
 
 
 class ResourceManager:
@@ -13,7 +14,7 @@ class ResourceManager:
         self.session_manager = session_manager
 
     def add_resource(self, resource: Resource):
-        print(f"Adding resource: {resource.type}")
+        Log.p(f"Adding resource: {resource.type}")
 
         self.resources.append(resource)
         self.notify_session_manager(resource)

@@ -3,6 +3,7 @@ from typing import List
 from company import Role
 from resource.Resource import Resource
 from tasking.Task import Task
+from util import Log
 
 
 class TeamMember:
@@ -42,6 +43,6 @@ class TeamMember:
         self.tasks.append(task)
 
     def work(self):
-        print(f"{self.name} working on task: {self.tasks}")
+        Log.p(f"{self.name} working on task: {self.tasks}")
         # TODO("Work on tasks")
         pass
