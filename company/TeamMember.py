@@ -36,12 +36,28 @@ class TeamMember:
         for task in self.tasks:
             if task.needs_resource(resource):
                 return task
-        # If no task that need that resource yet, create a new one
+
+    def create_task(self):
         task = Task(self.role.input_types)
         return task
 
     def add_task(self, task: Task):
         self.tasks.append(task)
+
+    def remove_task(self, task: Task):
+        self.tasks.remove(task)
+
+    def has_ready_task(self) -> bool:
+        for task in self.tasks:
+            if task.is_ready():
+                return True
+        return False
+
+    def has_task_with_incomplete_resources(self) -> bool:
+        for task in self.tasks:
+            if task.is_incomplete():
+                return True
+        return False
 
     def work(self) -> list[Resource]:
         outputs: list[Resource] = []
@@ -52,16 +68,26 @@ class TeamMember:
                 outputs.extend(self.do_task(task))
                 self.log(f"TaskStatus -> {TaskStatus.DONE}")
                 task.status = TaskStatus.DONE
+                self.remove_task(task)
         return outputs
 
     def do_task(self, task: Task) -> list[Resource]:
         outputs: list[Resource] = []
         for output_type in self.role.output_types:
-            self.log(f"Doing task {task} -> Output: {output_type.name}")
+            self.log(f"Doing task:"
+                     f"\n\t\tInputs: {self.stringify_inputs(task.resources)}"
+                     f"\n\t\tTask: {output_type.instructions}"
+                     f"\n\t\tOutput: {output_type.name}")
             # TODO("Do actual task")
-            output_resource = Resource(output_type, f"Output by {self.name} ({self.role.role})")
+            output_resource = Resource(output_type.name, f"Output by {self.role.role} ({self.name})")
             outputs.append(output_resource)
         return outputs
 
+    def stringify_inputs(self, inputs: list[Resource]):
+        input_types = []
+        for inp in inputs:
+            input_types.append(inp.type)
+        return ",".join(input_types)
+
     def log(self, msg: str):
-        Log.p(f"{self.name} ({self.role.role}): {msg}")
+        Log.p(f"{self.role.role} ({self.name}): {msg}")
