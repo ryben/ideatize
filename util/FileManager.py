@@ -3,6 +3,7 @@ import os.path
 
 from company.Company import Company
 from company.Project import Project
+from company.TeamMember import TeamMember
 from company.model.CompanyInfo import CompanyInfo
 from company.model.OutputType import OutputType
 from company.model.Role import Role
@@ -21,6 +22,8 @@ class FileManager:
     companies_path = os.path.join(workspace_path, companies_folder)
     company_json_file = "info.json"
     roles_folder = "roles"
+    projects_folder = "projects"
+    project_file = "info.json"
 
     @staticmethod
     def load_workspace_json() -> str:
@@ -37,8 +40,9 @@ class FileManager:
 
     @staticmethod
     def load_company(company_folder) -> Company:
-        company_json_file = os.path.join(FileManager.companies_path,
-                                         company_folder,
+        company_folder_path = os.path.join(FileManager.companies_path,
+                                           company_folder)
+        company_json_file = os.path.join(company_folder_path,
                                          FileManager.company_json_file)
         f = open(company_json_file, "r")
         company_info: CompanyInfo
@@ -47,7 +51,9 @@ class FileManager:
 
         company = Company(company_info.name)
         company.roles = FileManager.load_roles(company_folder, company_info.roles)
-        company.projects = FileManager.load_projects(company_info.roles)
+
+        projects_folder = os.path.join(company_folder_path, FileManager.projects_folder)
+        company.projects = FileManager.load_projects(projects_folder, company_info.projects, company.roles)
 
         return company
 
@@ -79,8 +85,40 @@ class FileManager:
         return loaded_roles
 
     @staticmethod
-    def load_projects(projects: list[str]) -> list[Project]:
-        return []
+    def load_projects(projects_folder: str, projects: list[str], roles: list[Role]) -> list[Project]:
+        print(f"Loading projects: {projects}")
+
+        loaded_projects: list[Project] = []
+
+        for project in projects:
+            project_folder_path = os.path.join(projects_folder,
+                                               project)
+
+            project_file_path = os.path.join(project_folder_path, FileManager.project_file)
+            project_json = FileManager.read_file(project_file_path)
+            project_obj = JsonUtil.json_load(project_json)
+
+            # Load team members by parsing the Json TODO("Use library to parse nested json into object")
+            team_members: list[TeamMember] = []
+            for member in project_obj["team_members"]:
+                name = member["name"]
+                role = FileManager.find_role_by_name(member["role"], roles)
+                new_member = TeamMember(name, role)
+                team_members.append(new_member)
+
+            loaded_project = Project(project_obj["name"], team_members)
+            loaded_project.description = project_obj["description"]
+
+            loaded_projects.append(loaded_project)
+        return loaded_projects
+
+    @staticmethod
+    def find_role_by_name(name: str, roles: list[Role]):
+        for role in roles:
+            if role.role == name:
+                return role
+
+        raise Exception(f"Role not found: {name}")
 
     @staticmethod
     def save_company(company: Company):

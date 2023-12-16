@@ -20,7 +20,7 @@ class Company:
 
     def receive_prompt(self, prompt: Prompt):
         Log.p(f"Prompt received: {prompt}")
-        project = self.create_project("Calculator")
+        project = self.get_or_create_project("Calculator")
         self.projects.append(project)
         self.execute_project_from_prompt(project, prompt)
 
@@ -28,16 +28,38 @@ class Company:
         session = project.create_session()
         session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
 
-    def create_project(self, project_name: str) -> Project:
-        Log.p(f"Creating project: {project_name}")
+    def create_project(self, name: str) -> Project:
+        Log.p(f"Creating project: {name}")
 
         team_members = self.assemble_team()
-        Log.p(f"Project {project_name} team members: {team_members}")
+        names = []
+        for member in team_members:
+            names.append(member.name)
+        Log.p(f"Project {name} team members: {",".join(names)}")
 
-        return Project(project_name, team_members)
+        return Project(name, team_members)
 
-    def assemble_team(self) -> List[TeamMember]:
-        # TODO("Replace dummy team member")
+    def get_project(self, name: str):
+        for project in self.projects:
+            if project.name == name:
+                return project
+        raise Exception(f"Project not found: {name}")
+
+    def get_or_create_project(self, name: str):
+        if self.is_project_existing(name):
+            Log.p(f"Getting existing project: {name}")
+            return self.get_project(name)
+        else:
+            Log.p(f"Creating new project: {name}")
+            return self.create_project(name)
+
+    def is_project_existing(self, name: str):
+        for project in self.projects:
+            if project.name == name:
+                return True
+        return False
+
+    def assemble_team(self) -> list[TeamMember]:
         team_member = TeamMember("Rey", self.roles[0])
         return [team_member]
 
