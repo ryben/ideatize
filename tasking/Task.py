@@ -14,7 +14,7 @@ class Task:
         self.needed_resource_types = needed_resources
         self.status = TaskStatus.MISSING_RESOURCE  # All tasks have required resources before they can be worked on
 
-    def add_resource(self, resource: Resource):
+    def attack_resource(self, resource: Resource):
         self.__resources.append(resource)
         self.needed_resource_types.remove(resource.type)
         if len(self.needed_resource_types) == 0:

@@ -22,8 +22,6 @@ class Project:
         Log.p(f"Creating session")
 
         task_manager = TaskManager()
-        session_manager = SessionManager(task_manager, self.team_members)
-        return Session(task_manager,
-                       session_manager,
-                       ResourceManager(session_manager),
-                       self.team_members)
+        resource_manager = ResourceManager()
+        session_manager = SessionManager(resource_manager, task_manager, self.team_members)
+        return Session(session_manager)

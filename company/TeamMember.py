@@ -43,8 +43,25 @@ class TeamMember:
     def add_task(self, task: Task):
         self.tasks.append(task)
 
-    def work(self):
+    def work(self) -> list[Resource]:
+        outputs: list[Resource] = []
         for task in self.tasks:
-            Log.p(f"{self.name}: setting task status to {TaskStatus.IN_PROGRESS}")
-            task.status = TaskStatus.IN_PROGRESS
+            if task.is_ready():
+                self.log(f"TaskStatus -> {TaskStatus.IN_PROGRESS}")
+                task.status = TaskStatus.IN_PROGRESS
+                outputs.extend(self.do_task(task))
+                self.log(f"TaskStatus -> {TaskStatus.DONE}")
+                task.status = TaskStatus.DONE
+        return outputs
 
+    def do_task(self, task: Task) -> list[Resource]:
+        outputs: list[Resource] = []
+        for output_type in self.role.output_types:
+            self.log(f"Doing task {task} -> Output: {output_type.name}")
+            # TODO("Do actual task")
+            output_resource = Resource(output_type, f"Output by {self.name} ({self.role.role})")
+            outputs.append(output_resource)
+        return outputs
+
+    def log(self, msg: str):
+        Log.p(f"{self.name} ({self.role.role}): {msg}")

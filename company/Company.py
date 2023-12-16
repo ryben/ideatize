@@ -26,7 +26,9 @@ class Company:
 
     def execute_project_from_prompt(self, project: Project, prompt: Prompt):
         session = project.create_session()
-        session.resource_manager.add_resource(ResourceFactory.fromPrompt(prompt))
+        resource = ResourceFactory.fromPrompt(prompt)
+        session.receive_resource(resource)
+
 
     def create_project(self, name: str) -> Project:
         Log.p(f"Creating project: {name}")
@@ -45,7 +47,7 @@ class Company:
                 return project
         raise Exception(f"Project not found: {name}")
 
-    def get_or_create_project(self, name: str):
+    def get_or_create_project(self, name: str) -> Project:
         if self.is_project_existing(name):
             Log.p(f"Getting existing project: {name}")
             return self.get_project(name)

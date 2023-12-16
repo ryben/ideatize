@@ -1,7 +1,7 @@
 {
   "role": "Researcher",
   "input_types": [
-    "Go signal"
+    "Prompt"
   ],
   "output_types": [
     {
