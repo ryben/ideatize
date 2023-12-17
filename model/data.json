@@ -1,0 +1,118 @@
+{
+    "companies": [
+        {
+            "name": "Calcutech",
+            "roles": [
+                {
+                    "name": "Architect",
+                    "inputs": [
+                        "App Feature Set",
+                        "UI Design",
+                        "User Flow"
+                    ],
+                    "outputs": [
+                        {
+                            "name": "High Level Integration Logic",
+                            "instructions": ""
+                        },
+                        {
+                            "name": "List of Classes with definitions",
+                            "instructions": ""
+                        }
+                    ],
+                    "skills": [
+                    ]
+                },
+                {
+                    "name": "Developer",
+                    "inputs": [
+                        "List of Classes with definitions"
+                    ],
+                    "outputs": [
+                        {
+                            "name": "App Prototype",
+                            "instructions": "Implement the classes given the definitions"
+                        }
+                    ],
+                    "skills": [
+                        "coding"
+                    ]
+                },
+                {
+                    "name": "Product Manager",
+                    "inputs": [
+                        "Researched Topic"
+                    ],
+                    "outputs": [
+                        {
+                            "name": "App Feature Set",
+                            "instructions": "Given a researched topic, think of an app and define its features"
+                        }
+                    ],
+                    "skills": [
+                    ]
+                },
+                {
+                    "name": "Researcher",
+                    "inputs": [
+                        "Prompt"
+                    ],
+                    "outputs": [
+                        {
+                            "name": "Researched Topic",
+                            "instructions": "Search for topics online that are trending based on hashtags and most popular posts from social media, as well as Google Trends"
+                        }
+                    ],
+                    "skills": [
+                        "Internet search"
+                    ]
+                },
+                {
+                    "name": "UI/UX Designer",
+                    "inputs": [
+                        "App Feature Set"
+                    ],
+                    "outputs": [
+                        {
+                            "name": "UI Design",
+                            "instructions": "Generate the UI Design of the app, written in HTML, beautified with CSS"
+                        },
+                        {
+                            "name": "User Flow",
+                            "instructions": "Define how the app will be used given its features, by creating a flow"
+                        }
+                    ],
+                    "skills": [
+                    ]
+                }
+            ],
+            "projects": [
+                {
+                    "name": "Calculator",
+                    "staff": [
+                        {
+                            "name": "Archie Tekture",
+                            "role": "Architect"
+                        },
+                        {
+                            "name": "Devin Loop",
+                            "role": "Developer"
+                        },
+                        {
+                            "name": "Perry Scope",
+                            "role": "Product Manager"
+                        },
+                        {
+                            "name": "Rita Book",
+                            "role": "Researcher"
+                        },
+                        {
+                            "name": "Artie Flow",
+                            "role": "UI/UX Designer"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
