@@ -1,12 +1,11 @@
-import traceback
-
-import Workspace
+from model.Workspace import Workspace
 from prompt.Prompt import Prompt
 
 
 def main():
     prompt = Prompt("Create a calculator app")
-    Workspace.init().get_or_create_company("Ryben Productions").receive_prompt(prompt)
+    company = Workspace.instance().get_company("Calcutech")
+    print(company.name)
 
 
 main()
