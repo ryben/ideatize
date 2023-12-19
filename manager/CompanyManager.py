@@ -13,7 +13,7 @@ class CompanyManager:
         self.company = company
         self.project_managers = []
         for project in company.projects:
-            self.project_managers.append(ProjectManager(project))
+            self.project_managers.append(ProjectManager(project, company.roles))
 
     def receive_prompt(self, prompt: Prompt):
         Log.p(f"Prompt received: {prompt}")
@@ -40,8 +40,8 @@ class CompanyManager:
             names.append(member.name)
         Log.p(f"Project {name} team members: {",".join(names)}")
 
-        project = Project(name, staff)
-        self.project_managers.append(ProjectManager(project))
+        project = Project(name, staff, [])
+        self.project_managers.append(ProjectManager(project, self.company.roles))
         self.company.projects.append(project)
 
         return project

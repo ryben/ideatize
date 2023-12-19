@@ -20,7 +20,7 @@ class SessionManager:
         for member in self.team_members:
             # Check among team members who needs the Resource
             if resource.type in member.get_input_types():
-                Log.p(f"{member.name} ({member.role.role}) needs the resource: {resource.type}")
+                Log.p(f"{member.name} ({member.role.name}) needs the resource: {resource.type}")
                 is_resource_needed = True
 
                 # Check if an existing task is needing the resource
@@ -32,7 +32,7 @@ class SessionManager:
                     member.add_task(task)
 
                 # Attach resource to the task
-                Log.p(f"Updating task (with {resource.type}) of {member.name} ({member.role.role})")
+                Log.p(f"Updating task (with {resource.type}) of {member.name} ({member.role.name})")
                 task.attach_resource(resource)
         if not is_resource_needed:
             Log.p(f"No member needs the resource: {resource.type} ------- ")
@@ -40,14 +40,14 @@ class SessionManager:
     def get_outputs_from_members(self) -> list[Resource]:
         outputs: list[Resource] = []
         for member in self.team_members:
-            Log.p(f"{member.role.role} ({member.name}) has {len(member.tasks)} task(s).")
+            Log.p(f"{member.role.name} ({member.name}) has {len(member.tasks)} task(s).")
 
             if member.has_ready_task():
                 member_outputs = member.work()
-                Log.p(f"{member.role.role} ({member.name}) finished work: {len(member_outputs)} outputs")
+                Log.p(f"{member.role.name} ({member.name}) finished work: {len(member_outputs)} outputs")
                 outputs.extend(member_outputs)
             elif member.has_task_with_incomplete_resources():
-                Log.p(f"{member.role.role} ({member.name}) has tasks with incomplete resources.")
+                Log.p(f"{member.role.name} ({member.name}) has tasks with incomplete resources.")
             # else:
             #     Log.p(f"{member.role.role} ({member.name}) has nothing to do.")
         return outputs

@@ -79,7 +79,7 @@ class TeamMember:
                      f"\n\t\tTask: {output_type.instructions}"
                      f"\n\t\tOutput: {output_type.name}")
             # TODO("Do actual task")
-            output_resource = Resource(output_type.name, f"Output by {self.role.role} ({self.name})")
+            output_resource = Resource(output_type.name, f"Output by {self.role.name} ({self.name})")
             outputs.append(output_resource)
         return outputs
 
@@ -90,4 +90,4 @@ class TeamMember:
         return ",".join(input_types)
 
     def log(self, msg: str):
-        Log.p(f"{self.role.role} ({self.name}): {msg}")
+        Log.p(f"{self.role.name} ({self.name}): {msg}")
