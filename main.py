@@ -1,6 +1,6 @@
 from manager.CompanyManager import CompanyManager
 from manager.WorkspaceManager import WorkspaceManager
-from prompt.Prompt import Prompt
+from model.Prompt import Prompt
 
 
 def main():

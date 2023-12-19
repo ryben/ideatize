@@ -1,7 +1,7 @@
 from core.BaseSubscriber import BaseSubscriber
 from manager.ResourcesManager import ResourcesManager
 from model.Data import Role, Output
-from resource.Resource import Resource
+from model.Resource import Resource
 from util import Log
 
 

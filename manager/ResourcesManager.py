@@ -1,6 +1,6 @@
 from core.BasePublisher import BasePublisher
-from resource.Resource import Resource
-from util import Log
+from model.Prompt import Prompt
+from model.Resource import Resource
 
 
 class ResourcesManager(BasePublisher):
@@ -9,6 +9,11 @@ class ResourcesManager(BasePublisher):
     def __init__(self):
         super().__init__()
         self.resources = []
+
+    def create_from_prompt(self, prompt: Prompt) -> Resource:
+        resource = Resource("Prompt", "Resource content")
+        resource.content = prompt.content
+        return resource
 
     def add_resource(self, resource: Resource):
         # Log.p(f"Adding resource: {resource.type}")

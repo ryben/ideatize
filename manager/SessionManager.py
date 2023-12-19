@@ -1,7 +1,7 @@
 from manager.ResourcesManager import ResourcesManager
 from model.Data import Session
-from model.StaffMember import StaffMember
-from resource.Resource import Resource
+from staff.StaffMember import StaffMember
+from model.Resource import Resource
 from util import Log
 
 

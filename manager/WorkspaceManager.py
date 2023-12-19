@@ -1,6 +1,5 @@
-from model import FileManager
 from model.Data import Workspace, Company
-from util import JsonUtil
+from util import JsonUtil, FileManager
 
 
 class WorkspaceManager:

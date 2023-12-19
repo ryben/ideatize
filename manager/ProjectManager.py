@@ -1,6 +1,6 @@
 from manager.SessionManager import SessionManager
 from model.Data import Project, Session, Role
-from model.StaffMember import StaffMember
+from staff.StaffMember import StaffMember
 from util import Log
 
 
