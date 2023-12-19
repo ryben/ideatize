@@ -1,5 +1,5 @@
 from manager.SessionManager import SessionManager
-from model.Data import Project, Session, Staff, Role
+from model.Data import Project, Session, Role
 from model.StaffMember import StaffMember
 from util import Log
 
@@ -17,10 +17,15 @@ class ProjectManager:
         self.session_managers = []
 
         for staff in project.staff:
-            self.staff_members.append(StaffMember(staff, roles))
+            self.staff_members.append(StaffMember(staff.name, self.find_role_by_name(staff.role)))
 
         for session in project.sessions:
             self.session_managers.append(SessionManager(session, self.staff_members))
+
+    def find_role_by_name(self, role_name) -> Role:
+        for role in self.roles:
+            if role.name == role_name:
+                return role
 
     def create_session(self) -> Session:
         Log.p(f"Creating session")

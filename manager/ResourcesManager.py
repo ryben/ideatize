@@ -11,6 +11,9 @@ class ResourcesManager(BasePublisher):
         self.resources = []
 
     def add_resource(self, resource: Resource):
-        Log.p(f"Adding resource: {resource.type}")
+        # Log.p(f"Adding resource: {resource.type}")
         self.resources.append(resource)
+        self.notify_staff_members(resource)
+
+    def notify_staff_members(self, resource: Resource):
         self.notify_observers(resource)
