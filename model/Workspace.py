@@ -1,5 +1,5 @@
-from model import FileManager
-from model.Company import Company
+from company.Company import Company
+from model import FileManager, Data
 from util import JsonUtil
 
 
@@ -10,14 +10,13 @@ class Workspace:
         self.companies = companies
 
     @staticmethod
-    def instance():
-        workspace_json = FileManager.load_workspace_json("workspace.json")
-        obj = JsonUtil.json_to_object(workspace_json)
-        return Workspace(obj['companies'])
+    def instance() -> Workspace:
+        workspace_json = FileManager.load_data_json("workspace.json")
+        workspace = Data.parse_json_to_dataclass(JsonUtil.json_load(workspace_json))
 
-    def get_company(self, name: str):
+        return workspace
+
+    def get_company(self, name: str) -> Company:
         for company in self.companies:
             if company.name == name:
                 return company
-
-

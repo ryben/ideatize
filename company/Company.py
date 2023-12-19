@@ -13,10 +13,10 @@ class Company:
     roles: List[Role]
     projects: List[Project]
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, roles: list[Role], projects: list[Project]):
         self.name = name
-        self.roles = []
-        self.projects = []
+        self.roles = roles
+        self.projects = projects
 
     def receive_prompt(self, prompt: Prompt):
         Log.p(f"Prompt received: {prompt}")
@@ -28,7 +28,6 @@ class Company:
         session = project.create_session()
         resource = ResourceFactory.fromPrompt(prompt)
         session.receive_resource(resource)
-
 
     def create_project(self, name: str) -> Project:
         Log.p(f"Creating project: {name}")

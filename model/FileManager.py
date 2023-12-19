@@ -1,7 +1,7 @@
 import os
 
 
-def load_workspace_json(filename: str) -> str:
+def load_data_json(filename: str) -> str:
     # Read from file
     return read_file(os.path.join(os.getcwd(), filename))
 

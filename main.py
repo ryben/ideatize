@@ -1,11 +1,14 @@
-from model.Workspace import Workspace
+from manager.CompanyManager import CompanyManager
+from manager.WorkspaceManager import WorkspaceManager
 from prompt.Prompt import Prompt
 
 
 def main():
     prompt = Prompt("Create a calculator app")
-    company = Workspace.instance().get_company("Calcutech")
-    print(company.name)
+
+    company = WorkspaceManager().get_company("Calcutech")
+    company_manager = CompanyManager(company)
+    company_manager.receive_prompt(prompt)
 
 
 main()

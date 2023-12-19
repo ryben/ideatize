@@ -3,8 +3,19 @@ from collections import namedtuple
 from types import SimpleNamespace
 
 
-def from_json(json_str: str, my_class):
-    return json.loads(json_str, object_hook=lambda d: my_class(**d))
+def from_json(json_str, to_class):
+    json_data = json.loads(json_str)
+
+    def _dict_to_dataclass(cls, data):
+        if isinstance(data, dict):
+            field_types = {f.name: f.type for f in cls.__dataclass_fields__.values()}
+            return cls(**{k: _dict_to_dataclass(field_types[k], v) for k, v in data.items()})
+        elif isinstance(data, list):
+            return [_dict_to_dataclass(cls.__args__[0], item) for item in data]
+        else:
+            return data
+
+    return _dict_to_dataclass(to_class, json_data)
 
 
 def json_load(json_str: str):
