@@ -1,3 +1,5 @@
+import copy
+
 from manager.SessionManager import SessionManager
 from model.Data import Project, Session, Role
 from staff.StaffMember import StaffMember
@@ -20,17 +22,20 @@ class ProjectManager:
             self.staff_members.append(StaffMember(staff.name, self.find_role_by_name(staff.role)))
 
         for session in project.sessions:
-            self.session_managers.append(SessionManager(session, self.staff_members))
+            self.add_session_manager(session)
 
     def find_role_by_name(self, role_name) -> Role:
         for role in self.roles:
             if role.name == role_name:
                 return role
 
+    def add_session_manager(self, session: Session):
+        self.session_managers.append(SessionManager(session, copy.deepcopy(self.staff_members)))
+
     def create_session(self) -> Session:
         Log.p(f"Creating session")
         session = Session("1")  # TODO("Make unique IDs")
-        self.session_managers.append(SessionManager(session, self.staff_members))
+        self.add_session_manager(session)
         return session
 
     def get_session_manager(self, session: Session):
