@@ -46,6 +46,7 @@ class Skill:
     name: str
     inputs: List[str]
     outputs: List[str]
+    script_file: str
 
 
 @dataclass
