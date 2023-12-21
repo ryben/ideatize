@@ -115,5 +115,16 @@
                 }
             ]
         }
+    ],
+    "skills": [
+        {
+            "name": "LLM",
+            "inputs": [
+                "Prompt"
+            ],
+            "outputs": [
+                "LLM Output"
+            ]
+        }
     ]
 }

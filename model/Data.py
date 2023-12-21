@@ -42,5 +42,13 @@ class Company:
 
 
 @dataclass
+class Skill:
+    name: str
+    inputs: List[str]
+    outputs: List[str]
+
+
+@dataclass
 class Workspace:
     companies: List[Company]
+    skills: List[Skill]
