@@ -124,7 +124,8 @@
             ],
             "outputs": [
                 "LLM Output"
-            ]
+            ],
+            "script_file": "ParseTextSkill.py"
         }
     ]
 }

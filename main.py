@@ -1,8 +1,8 @@
+from util import SkillLoader
 from manager.CompanyManager import CompanyManager
 from manager.WorkspaceManager import WorkspaceManager
 from model.Prompt import Prompt
 from skills.BaseSkill import BaseSkill
-from skills.ParseTextSkill import ParseTextSkill
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
     company_manager = CompanyManager(company)
     company_manager.receive_prompt(prompt)
 
-    skill: BaseSkill = ParseTextSkill()
+    skill: BaseSkill = SkillLoader.load("ParseTextSkill.py")
     skill.set_inputs("This is a test skill")
     skill.execute()
     print(skill.get_outputs())
