@@ -18,9 +18,6 @@ class ProjectManager:
         self.staff_members = []
         self.session_managers = []
 
-        for staff in project.staff:
-            self.staff_members.append(StaffMember(staff.name, self.find_role_by_name(staff.role)))
-
         for session in project.sessions:
             self.add_session_manager(session)
 
@@ -30,7 +27,7 @@ class ProjectManager:
                 return role
 
     def add_session_manager(self, session: Session):
-        self.session_managers.append(SessionManager(session, copy.deepcopy(self.staff_members)))
+        self.session_managers.append(SessionManager(session, self.project.staff, self.roles))
 
     def create_session(self) -> Session:
         Log.p(f"Creating session")

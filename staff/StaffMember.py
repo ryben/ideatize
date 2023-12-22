@@ -11,12 +11,10 @@ class StaffMember(BaseSubscriber):
     resources_manager: ResourcesManager
     available_resources: list[Resource]
 
-    def __init__(self, name: str, role: Role):
+    def __init__(self, name: str, role: Role, resources_manager: ResourcesManager):
         self.name = name
         self.role = role
         self.available_resources = []
-
-    def set_resources_manager(self, resources_manager: ResourcesManager):
         self.resources_manager = resources_manager
 
     def on_get_update(self, resource):

@@ -2,6 +2,7 @@ from manager.ProjectManager import ProjectManager
 from model.Data import Company, Project, Staff
 from model.Prompt import Prompt
 from util import Log
+from util.ResourceFactory import ResourceFactory
 
 
 class CompanyManager:
@@ -23,7 +24,7 @@ class CompanyManager:
         project_manager = self.get_project_manager(project)
         session = project_manager.create_session()
         session_manager = project_manager.get_session_manager(session)
-        session_manager.receive_resource(session_manager.resources_manager.create_from_prompt(prompt))
+        session_manager.receive_resource(ResourceFactory.create_from_prompt(prompt))
 
     def get_project_manager(self, project) -> ProjectManager:
         for project_manager in self.project_managers:
