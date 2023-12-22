@@ -8,14 +8,15 @@ from model.Resource import Resource
 class ResourceCollaborator(BaseSubscriber):
     resources_manager: ResourcesManager
     available_resources: list[Resource]
+    applicable_input_types: list[str]
 
-    def __init__(self):
+    def __init__(self, resources_manager: ResourcesManager, applicable_input_types: list[str]):
         self.available_resources = []
-        self.resources_manager: ResourcesManager
+        self.resources_manager = resources_manager
+        self.applicable_input_types = applicable_input_types
 
-    @abstractmethod
     def is_applicable_resource(self, resource) -> bool:
-        pass
+        return resource.type in self.applicable_input_types
 
     def on_get_update(self, resource):
         if self.is_applicable_resource(resource):
@@ -24,14 +25,17 @@ class ResourceCollaborator(BaseSubscriber):
     def on_receive_applicable_resource(self, resource: Resource):
         self.available_resources.append(resource)
 
-        if self.can_start_output():
-            for output in self.create_outputs():
-                self.resources_manager.add_resource(output)
+        if self.can_start_outputs():
+            for output_resource in self.create_output_resources():
+                self.resources_manager.add_resource(output_resource)
+
+    def can_start_outputs(self) -> bool:
+        types_of_available_resources = set()
+        for available_resource in self.available_resources:
+            types_of_available_resources.add(available_resource.type)
+
+        return set(self.applicable_input_types) == types_of_available_resources
 
     @abstractmethod
-    def can_start_output(self) -> bool:
-        pass
-
-    @abstractmethod
-    def create_outputs(self) -> list:
+    def create_output_resources(self) -> list[Resource]:
         pass
