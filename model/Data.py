@@ -52,4 +52,3 @@ class Skill:
 @dataclass
 class Workspace:
     companies: List[Company]
-    skills: List[Skill]

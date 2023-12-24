@@ -35,7 +35,7 @@
                         }
                     ],
                     "skills": [
-                        "coding"
+                        "Parse Text"
                     ]
                 },
                 {
@@ -114,18 +114,6 @@
                     "sessions": []
                 }
             ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "LLM",
-            "inputs": [
-                "Prompt"
-            ],
-            "outputs": [
-                "LLM Output"
-            ],
-            "script_file": "ParseTextSkill.py"
         }
     ]
 }
