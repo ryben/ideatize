@@ -19,7 +19,7 @@ class SkillLoader:
             if skill.name == skill_name:
                 base_skill = self.load(skill.script_file)
                 base_skill.inputs = skill.inputs
-                base_skill.outputs = skill.outputs
+                base_skill.output = skill.output
                 return base_skill
 
     def load(self, skill_file_name) -> BaseSkill:

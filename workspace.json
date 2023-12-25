@@ -3,6 +3,45 @@
         {
             "name": "Calcutech",
             "roles": [
+
+                {
+                    "name": "Researcher",
+                    "inputs": [
+                        "Prompt"
+                    ],
+                    "outputs": [
+                        "Researched Topic"
+                    ],
+                    "skills": [
+                        "Internet Search"
+                    ]
+                },
+                {
+                    "name": "Product Manager",
+                    "inputs": [
+                        "Researched Topic"
+                    ],
+                    "outputs": [
+                        "App Feature Set"
+                    ],
+                    "skills": [
+                        "LLM - App Features Thinking"
+                    ]
+                },
+                {
+                    "name": "UI/UX Designer",
+                    "inputs": [
+                        "App Feature Set"
+                    ],
+                    "outputs": [
+                        "UI Design",
+                        "User Flow"
+                    ],
+                    "skills": [
+                        "LLM - UI Designing",
+                        "LLM - User Flow Designing"
+                    ]
+                },
                 {
                     "name": "Architect",
                     "inputs": [
@@ -24,41 +63,6 @@
                     ],
                     "outputs": [
                         "App Prototype"
-                    ],
-                    "skills": [
-                    ]
-                },
-                {
-                    "name": "Product Manager",
-                    "inputs": [
-                        "Researched Topic"
-                    ],
-                    "outputs": [
-                        "App Feature Set"
-                    ],
-                    "skills": [
-                    ]
-                },
-                {
-                    "name": "Researcher",
-                    "inputs": [
-                        "Prompt"
-                    ],
-                    "outputs": [
-                        "Researched Topic"
-                    ],
-                    "skills": [
-                        "Parse Text"
-                    ]
-                },
-                {
-                    "name": "UI/UX Designer",
-                    "inputs": [
-                        "App Feature Set"
-                    ],
-                    "outputs": [
-                        "UI Design",
-                        "User Flow"
                     ],
                     "skills": [
                     ]

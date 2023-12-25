@@ -39,7 +39,7 @@ class Company:
 class Skill:
     name: str
     inputs: List[str]
-    outputs: List[str]
+    output: str
     script_file: str
 
 

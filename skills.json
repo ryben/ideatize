@@ -1,12 +1,34 @@
 [
     {
-        "name": "Parse Text",
+        "name": "Internet Search",
         "inputs": [
             "Prompt"
         ],
-        "outputs": [
+        "output": "Researched Topic",
+        "script_file": "InternetSearch.py"
+    },
+    {
+        "name": "LLM - App Features Thinking",
+        "inputs": [
             "Researched Topic"
         ],
-        "script_file": "ParseTextSkill.py"
+        "output": "App Feature Set",
+        "script_file": "AppFeatureThink.py"
+    },
+    {
+        "name": "LLM - UI Designing",
+        "inputs": [
+            "App Feature Set"
+        ],
+        "output": "UI Design",
+        "script_file": "UIDesigning.py"
+    },
+    {
+        "name": "LLM - User Flow Designing",
+        "inputs": [
+            "App Feature Set"
+        ],
+        "output": "User Flow",
+        "script_file": "UserFlowDesigning.py"
     }
 ]

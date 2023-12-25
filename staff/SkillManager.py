@@ -2,7 +2,6 @@ from manager.ResourcesManager import ResourcesManager
 from model.Resource import Resource
 from staff.SkillOutputSink import SkillOutputSink
 from staff.StaffSkill import StaffSkill
-from util import JsonUtil
 from util.SkillLoader import SkillLoader
 
 
@@ -12,7 +11,7 @@ class SkillManager:
     skill_loader: SkillLoader
     output_consumer: SkillOutputSink
 
-    def __init__(self, skill_names: list[str], skill_inputs: list[str], skill_outputs: list[str]):
+    def __init__(self, skill_names: list[str], skill_outputs: list[str]):
         self.skills = []
         self.resources_manager = ResourcesManager()
         self.skill_loader = SkillLoader()

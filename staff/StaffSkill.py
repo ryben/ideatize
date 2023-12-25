@@ -12,16 +12,14 @@ class StaffSkill(ResourceCollaborator):
         self.base_skill = base_skill
 
     def create_output_resources(self, available_resources: list[Resource]) -> list[Resource]:
-        output_content = self.base_skill.execute()
+        base_skill_inputs = {}
 
+        # Map resources using input types as keys
         for resource in self.available_resources:
-            print(f"Available resource: {resource.type} - {resource.content}")
-            # TODO("Outputs should be created upon execution of the base skill, using the input resources
+            base_skill_inputs[resource.type] = resource.content
 
-        outputs = []
-        for output in self.base_skill.outputs:
-            print(f"Creating skill output resource: {output} with content {output_content}")
-            outputs.append(Resource(output, output_content))
-        return outputs
+        skill_output = self.base_skill.execute(base_skill_inputs)
+        output_resource = Resource(self.base_skill.output, skill_output)
+        print(f"Output resource: {output_resource.type} - {output_resource.content}")
 
-
+        return [output_resource]
