@@ -1,11 +1,11 @@
 [
     {
         "name": "Internet Search",
-        "details": "Do an internet search about the topic provided",
+        "details": "Do an internet search about the following topic: {Prompt}",
         "inputs": [
             "Prompt"
         ],
-        "output": "Researched Topic",
+        "output": "Researched Topicz",
         "script_file": "InternetSearch.py"
     },
     {

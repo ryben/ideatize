@@ -7,10 +7,9 @@ from util.SkillLoader import SkillLoader
 
 
 def main():
-    prompt = Prompt("Create a calculator app")
-
     company = WorkspaceManager().get_company("Calcutech")
     company_manager = CompanyManager(company)
-    company_manager.receive_resource(ResourceFactory.create("Researched Topic", "Kathniel"))
+    company_manager.receive_resource(ResourceFactory.create("Prompt", "Trending topic right now on social media"))
+
 
 main()
