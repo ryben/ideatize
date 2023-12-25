@@ -1,6 +1,7 @@
 [
     {
         "name": "Internet Search",
+        "details": "Do an internet search about the topic provided",
         "inputs": [
             "Prompt"
         ],
@@ -9,6 +10,7 @@
     },
     {
         "name": "LLM - App Features Thinking",
+        "details": "Given the following researched topic, think of an app, and define its features: {Researched Topic}",
         "inputs": [
             "Researched Topic"
         ],
@@ -17,6 +19,7 @@
     },
     {
         "name": "LLM - UI Designing",
+        "details": "Using HTML and CSS, create the graphical user interface based on the app features described",
         "inputs": [
             "App Feature Set"
         ],
@@ -24,11 +27,22 @@
         "script_file": "LLM.py"
     },
     {
-        "name": "LLM - User Flow Designing",
+        "name": "LLM - Architecture",
+        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them.",
         "inputs": [
-            "App Feature Set"
+            "App Feature Set",
+            "UI Design"
         ],
-        "output": "User Flow",
+        "output": "List of Classes with definitions",
+        "script_file": "LLM.py"
+    },
+    {
+        "name": "LLM - Coding",
+        "details": "Implement the class definitions",
+        "inputs": [
+            "List of Classes with definitions"
+        ],
+        "output": "App Prototype",
         "script_file": "LLM.py"
     }
 ]

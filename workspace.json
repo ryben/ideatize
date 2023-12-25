@@ -34,26 +34,23 @@
                         "App Feature Set"
                     ],
                     "outputs": [
-                        "UI Design",
-                        "User Flow"
+                        "UI Design"
                     ],
                     "skills": [
-                        "LLM - UI Designing",
-                        "LLM - User Flow Designing"
+                        "LLM - UI Designing"
                     ]
                 },
                 {
                     "name": "Architect",
                     "inputs": [
                         "App Feature Set",
-                        "UI Design",
-                        "User Flow"
+                        "UI Design"
                     ],
                     "outputs": [
-                        "High Level Integration Logic",
                         "List of Classes with definitions"
                     ],
                     "skills": [
+                        "LLM - Architecture"
                     ]
                 },
                 {
@@ -65,6 +62,7 @@
                         "App Prototype"
                     ],
                     "skills": [
+                        "LLM - Coding"
                     ]
                 }
             ],

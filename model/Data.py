@@ -40,6 +40,7 @@ class Skill:
     name: str
     inputs: List[str]
     output: str
+    details: str
     script_file: str
 
 

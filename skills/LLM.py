@@ -6,5 +6,5 @@ class LLM(BaseSkill):
         super().__init__()
 
     def execute(self, inputs):
-        print(f"Processing inputs: {inputs}")
+        print(f"Processing inputs: {inputs} with details: {self.details}")
         return "Used LLM to generate an output"
