@@ -81,9 +81,9 @@ class InternetSearch(BaseSkill):
             self.run = self.wait_for_run_completion(thread.id, self.run.id)
 
         # Print messages from the thread
-        self.print_messages_from_thread(thread.id)
+        # self.print_messages_from_thread(thread.id)
 
-        return ""
+        return self.get_messages_from_thread(thread.id)
 
     # Function to perform a Tavily search
     def tavily_search(self, query):
@@ -125,3 +125,12 @@ class InternetSearch(BaseSkill):
         messages = self.client.beta.threads.messages.list(thread_id=thread_id)
         for msg in messages:
             print(f"{msg.role}: {msg.content[0].text.value}")
+
+    # Function to print messages from a thread
+    def get_messages_from_thread(self, thread_id) -> str:
+        messages = self.client.beta.threads.messages.list(thread_id=thread_id)
+        output = ""
+        for msg in messages:
+            output = f"{output}\n{msg.role}: {msg.content[0].text.value}"
+        return output
+

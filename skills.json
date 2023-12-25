@@ -5,7 +5,7 @@
         "inputs": [
             "Prompt"
         ],
-        "output": "Researched Topicz",
+        "output": "Researched Topic",
         "script_file": "InternetSearch.py"
     },
     {

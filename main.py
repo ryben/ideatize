@@ -1,9 +1,6 @@
 from manager.CompanyManager import CompanyManager
 from manager.WorkspaceManager import WorkspaceManager
-from model.Prompt import Prompt
-from skills.BaseSkill import BaseSkill
 from util.ResourceFactory import ResourceFactory
-from util.SkillLoader import SkillLoader
 
 
 def main():
