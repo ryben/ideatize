@@ -13,7 +13,7 @@
             "Researched Topic"
         ],
         "output": "App Feature Set",
-        "script_file": "AppFeatureThink.py"
+        "script_file": "LLM.py"
     },
     {
         "name": "LLM - UI Designing",
@@ -21,7 +21,7 @@
             "App Feature Set"
         ],
         "output": "UI Design",
-        "script_file": "UIDesigning.py"
+        "script_file": "LLM.py"
     },
     {
         "name": "LLM - User Flow Designing",
@@ -29,6 +29,6 @@
             "App Feature Set"
         ],
         "output": "User Flow",
-        "script_file": "UserFlowDesigning.py"
+        "script_file": "LLM.py"
     }
 ]

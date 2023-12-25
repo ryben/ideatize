@@ -6,4 +6,5 @@ class InternetSearch(BaseSkill):
         super().__init__()
 
     def execute(self, inputs):
+        print(f"Processing inputs: {inputs}")
         return "Here is a sample research about the topic"
