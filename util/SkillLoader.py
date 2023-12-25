@@ -17,7 +17,10 @@ class SkillLoader:
     def load_by_name(self, skill_name: str) -> BaseSkill:
         for skill in self.skills:
             if skill.name == skill_name:
-                return self.load(skill.script_file)
+                base_skill = self.load(skill.script_file)
+                base_skill.inputs = skill.inputs
+                base_skill.outputs = skill.outputs
+                return base_skill
 
     def load(self, skill_file_name) -> BaseSkill:
         module_name = skill_file_name.replace('.py', '')

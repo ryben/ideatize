@@ -15,17 +15,12 @@ class StaffMember(ResourceCollaborator):
         super().__init__(resources_manager, role.inputs)
         self.name = name
         self.role = role
-        self.skill_manager = SkillManager(role.skills)
+        self.skill_manager = SkillManager(role.skills, role.inputs, role.outputs)
 
-    def on_receive_applicable_resource(self, resource: Resource):
-        Log.p(f"{self.role.name} ({self.name})"
-              f"\n\t receiving:   {resource.type}")
-        super().on_receive_applicable_resource(resource)
+    def create_output_resources(self, available_resources: list[Resource]) -> list[Resource]:
+        Log.p(
+            f"{self.role.name} ({self.name}) has resources ({self.role.inputs}) - working on: {self.role.outputs}\n")
+        self.skill_manager.execute_skills(self.available_resources)
 
-    def create_output_resources(self) -> list[Resource]:
-        Log.p(f"{self.role.name} ({self.name}) has all needed resources ({self.role.inputs})"
-              f"\n\t working on: {self.role.outputs}\n")
-        outputs = []
-        for output in self.role.outputs:
-            outputs.append(Resource(output.name, ""))
-        return outputs
+        skill_outputs = self.skill_manager.output_consumer.get_resources()
+        return skill_outputs

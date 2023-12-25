@@ -3,16 +3,10 @@ from typing import List
 
 
 @dataclass
-class Output:
-    name: str
-    instructions: str
-
-
-@dataclass
 class Role:
     name: str
     inputs: List[str]
-    outputs: List[Output]
+    outputs: List[str]
     skills: List[str]
 
 

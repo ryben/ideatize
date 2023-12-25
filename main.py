@@ -12,10 +12,10 @@ def main():
     company_manager = CompanyManager(company)
     company_manager.receive_prompt(prompt)
 
-    skill: BaseSkill = SkillLoader().load_by_name("Parse Text")
-    skill.set_inputs("This is a test skill")
-    skill.execute()
-    print(skill.get_outputs())
+    # skill: BaseSkill = SkillLoader().load_by_name("Parse Text")
+    # skill.set_inputs("This is a test skill")
+    # skill.execute()
+    # print(skill.get_outputs())
 
 
 main()

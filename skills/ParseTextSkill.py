@@ -2,6 +2,10 @@ from skills.BaseSkill import BaseSkill
 
 
 class ParseTextSkill(BaseSkill):
-    def execute(self):
-        self.outputs = self.inputs.split()
+    def __init__(self):
+        super().__init__()
+
+    def process_inputs(self, inputs):
+        print(f"Executing parse skill for {inputs}")
+        return "Executed parse skill"
 

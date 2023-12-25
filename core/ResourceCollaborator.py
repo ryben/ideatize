@@ -26,7 +26,7 @@ class ResourceCollaborator(BaseSubscriber):
         self.available_resources.append(resource)
 
         if self.can_start_outputs():
-            for output_resource in self.create_output_resources():
+            for output_resource in self.create_output_resources(self.available_resources):
                 self.resources_manager.add_resource(output_resource)
 
     def can_start_outputs(self) -> bool:
@@ -37,5 +37,5 @@ class ResourceCollaborator(BaseSubscriber):
         return set(self.applicable_input_types) == types_of_available_resources
 
     @abstractmethod
-    def create_output_resources(self) -> list[Resource]:
+    def create_output_resources(self, available_resources: list[Resource]) -> list[Resource]:
         pass

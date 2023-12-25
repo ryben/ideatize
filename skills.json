@@ -5,7 +5,7 @@
             "Prompt"
         ],
         "outputs": [
-            "LLM Output"
+            "Researched Topic"
         ],
         "script_file": "ParseTextSkill.py"
     }

@@ -11,14 +11,8 @@
                         "User Flow"
                     ],
                     "outputs": [
-                        {
-                            "name": "High Level Integration Logic",
-                            "instructions": ""
-                        },
-                        {
-                            "name": "List of Classes with definitions",
-                            "instructions": ""
-                        }
+                        "High Level Integration Logic",
+                        "List of Classes with definitions"
                     ],
                     "skills": [
                     ]
@@ -29,13 +23,9 @@
                         "List of Classes with definitions"
                     ],
                     "outputs": [
-                        {
-                            "name": "App Prototype",
-                            "instructions": "Implement the classes given the definitions"
-                        }
+                        "App Prototype"
                     ],
                     "skills": [
-                        "Parse Text"
                     ]
                 },
                 {
@@ -44,10 +34,7 @@
                         "Researched Topic"
                     ],
                     "outputs": [
-                        {
-                            "name": "App Feature Set",
-                            "instructions": "Given a researched topic, think of an app and define its features"
-                        }
+                        "App Feature Set"
                     ],
                     "skills": [
                     ]
@@ -58,13 +45,10 @@
                         "Prompt"
                     ],
                     "outputs": [
-                        {
-                            "name": "Researched Topic",
-                            "instructions": "Search for topics online that are trending based on hashtags and most popular posts from social media, as well as Google Trends"
-                        }
+                        "Researched Topic"
                     ],
                     "skills": [
-                        "Internet search"
+                        "Parse Text"
                     ]
                 },
                 {
@@ -73,14 +57,8 @@
                         "App Feature Set"
                     ],
                     "outputs": [
-                        {
-                            "name": "UI Design",
-                            "instructions": "Generate the UI Design of the app, written in HTML, beautified with CSS"
-                        },
-                        {
-                            "name": "User Flow",
-                            "instructions": "Define how the app will be used given its features, by creating a flow"
-                        }
+                        "UI Design",
+                        "User Flow"
                     ],
                     "skills": [
                     ]
