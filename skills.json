@@ -19,7 +19,7 @@
     },
     {
         "name": "LLM - UI Designing",
-        "details": "Using HTML and CSS, create the graphical user interface based on the app features described",
+        "details": "Using HTML and CSS, create the graphical user interface based on the app features describedin the following: {App Feature Set}",
         "inputs": [
             "App Feature Set"
         ],
@@ -28,7 +28,7 @@
     },
     {
         "name": "LLM - Architecture",
-        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them.",
+        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them. Here is the UI Design {UI Design}. Then here's the app feature set {App Feature Set}",
         "inputs": [
             "App Feature Set",
             "UI Design"
@@ -38,7 +38,7 @@
     },
     {
         "name": "LLM - Coding",
-        "details": "Implement the class definitions",
+        "details": "Implement the class definitions: {List of Classes with definitions}",
         "inputs": [
             "List of Classes with definitions"
         ],
