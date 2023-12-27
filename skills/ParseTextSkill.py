@@ -1,7 +1,7 @@
-from skills.BaseSkill import BaseSkill
+from skills.BaseTask import BaseTask
 
 
-class ParseTextSkill(BaseSkill):
+class ParseTextTask(BaseTask):
     def __init__(self):
         super().__init__()
 

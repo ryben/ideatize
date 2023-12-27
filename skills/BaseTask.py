@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 
-class BaseSkill:
+class BaseTask:
     def __init__(self, inputs=None, output=None, details=""):
         if inputs is None:
             inputs = {}

@@ -6,10 +6,10 @@ from openai import OpenAI
 from openai.types.beta.threads import Run
 from tavily import TavilyClient
 
-from skills.BaseSkill import BaseSkill
+from skills.BaseTask import BaseTask
 
 
-class InternetSearch(BaseSkill):
+class InternetSearch(BaseTask):
     run: Run
 
     def __init__(self):

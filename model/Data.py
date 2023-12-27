@@ -7,7 +7,7 @@ class Role:
     name: str
     inputs: List[str]
     outputs: List[str]
-    skills: List[str]
+    tasks: List[str]
 
 
 @dataclass

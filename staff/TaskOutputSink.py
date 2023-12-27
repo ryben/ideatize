@@ -3,7 +3,7 @@ from manager.ResourcesManager import ResourcesManager
 from model.Resource import Resource
 
 
-class SkillOutputSink(ResourceCollaborator):
+class TaskOutputSink(ResourceCollaborator):
 
     def __init__(self, resources_manager: ResourcesManager, applicable_input_types: list[str]):
         super().__init__(resources_manager, applicable_input_types)

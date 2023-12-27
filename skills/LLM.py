@@ -2,10 +2,10 @@ import os
 
 from openai import OpenAI
 
-from skills.BaseSkill import BaseSkill
+from skills.BaseTask import BaseTask
 
 
-class LLM(BaseSkill):
+class LLM(BaseTask):
     def __init__(self):
         super().__init__()
 
