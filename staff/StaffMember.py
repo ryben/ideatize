@@ -4,6 +4,7 @@ from model.Data import Role
 from model.Resource import Resource
 from staff.TaskManager import TaskManager
 from util import Log
+from util.StaffLogger import StaffLogger
 
 
 class StaffMember(ResourceCollaborator):
@@ -16,6 +17,7 @@ class StaffMember(ResourceCollaborator):
         self.name = name
         self.role = role
         self.task_manager = TaskManager(role.tasks, role.outputs)
+        self.staff_logger = StaffLogger(self.name)
 
     def create_output_resources(self, available_resources: list[Resource]) -> list[Resource]:
         print("\n")
@@ -24,4 +26,7 @@ class StaffMember(ResourceCollaborator):
         self.task_manager.execute_tasks(self.available_resources)
 
         task_outputs = self.task_manager.output_consumer.get_resources()
+
+        self.staff_logger.log_output_resources(task_outputs)
+
         return task_outputs

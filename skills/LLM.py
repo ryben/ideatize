@@ -12,28 +12,25 @@ class LLM(BaseTask):
     def execute(self, inputs):
         client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-        instructions = self.details
-        input_key = list(inputs.keys())[0]
-        input_value = list(inputs.values())[0]
-        instructions = instructions.replace("{" + input_key + "}", input_value)
-
         # Step 1: Create an Assistant
         my_assistant = client.beta.assistants.create(
             model="gpt-4-1106-preview",
-            instructions="",
+            instructions=self.details,
             name="Rey"
         )
 
         # Step 2: Create a Thread
         my_thread = client.beta.threads.create()
 
-        print(f"Running instructions: {instructions}")
+        input_values = "\n\n".join(list(inputs.values()))
+
+        print(f"Entering inputs: {input_values}")
 
         # Step 3: Add a Message to a Thread
         my_thread_message = client.beta.threads.messages.create(
             thread_id=my_thread.id,
             role="user",
-            content=instructions,
+            content=input_values,
         )
 
         # Step 4: Run the Assistant

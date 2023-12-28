@@ -56,7 +56,8 @@
                 {
                     "name": "Developer",
                     "inputs": [
-                        "List of Classes with definitions"
+                        "List of Classes with definitions",
+                        "UI Design"
                     ],
                     "outputs": [
                         "App Prototype"

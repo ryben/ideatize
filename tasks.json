@@ -10,7 +10,7 @@
     },
     {
         "name": "LLM - App Features Thinking",
-        "details": "Given the following researched topic, think of an app, and define its features: {Researched Topic}",
+        "details": "Given the following researched topic, think of an app, and define its features. Make it simple - something that can be implemented quickly as a prototype web app: {Researched Topic}",
         "inputs": [
             "Researched Topic"
         ],
@@ -19,7 +19,7 @@
     },
     {
         "name": "LLM - UI Designing",
-        "details": "Using HTML and CSS, create the graphical user interface based on the app features describedin the following (just provide the code): {App Feature Set}",
+        "details": "Using HTML and CSS, create the graphical user interface based on the app features described. [output code only] [Respond with no formatting] [don't say anything else].",
         "inputs": [
             "App Feature Set"
         ],
@@ -28,7 +28,7 @@
     },
     {
         "name": "LLM - Architecture",
-        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them. Here is the UI Design <start>{UI Design}<end>. Then here's the app feature set <start>{App Feature Set}<end>. Just provide the code.",
+        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them. [output code only] [Respond with no formatting] [don't say anything else]",
         "inputs": [
             "App Feature Set",
             "UI Design"
@@ -38,9 +38,10 @@
     },
     {
         "name": "LLM - Coding",
-        "details": "Implement the class definitions in javascript (just provide the code): {List of Classes with definitions}",
+        "details": "Complete the code so that everything will work as a web app. Provide the full code with no placeholders. [output code only] [Respond with no formatting] [don't say anything else]",
         "inputs": [
-            "List of Classes with definitions"
+            "List of Classes with definitions",
+            "UI Design"
         ],
         "output": "App Prototype",
         "script_file": "LLM.py"
