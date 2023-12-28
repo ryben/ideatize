@@ -11,5 +11,7 @@ class ResourcesManager(BasePublisher):
         self.resources = []
 
     def add_resource(self, resource: Resource):
+        # TODO("Write all resource to a file every time a new one is added")
+
         self.resources.append(resource)
         self.publish_to_observers(resource)

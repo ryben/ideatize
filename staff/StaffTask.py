@@ -19,6 +19,7 @@ class StaffTask(ResourceCollaborator):
             base_task_inputs[resource.type] = resource.content
 
         task_output = self.base_task.execute(base_task_inputs)
+
         output_resource = Resource(self.base_task.output, task_output)
         print(f"Output resource: {output_resource.type} - {output_resource.content}")
 

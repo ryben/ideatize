@@ -68,9 +68,9 @@ class LLM(BaseTask):
 
         print("------------------------------------------------------------ \n")
 
-        print(f"User: {my_thread_message.content[0].text.value}")
+        # print(f"User: {my_thread_message.content[0].text.value}")
 
-        output = f"Assistant: {all_messages.data[0].content[0].text.value}"
+        output = f"{all_messages.data[0].content[0].text.value}"
         print(output)
 
         return output
