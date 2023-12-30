@@ -19,7 +19,7 @@
     },
     {
         "name": "LLM - UI Designing",
-        "details": "Using HTML and CSS, create the graphical user interface based on the app features described. [output code only] [Respond with no formatting] [don't say anything else].",
+        "details": "Using HTML and CSS, create the graphical user interface based on the app features described. If the code is pasted on a single html file, it should work as is. [output code only] [Respond with no formatting] [don't say anything else].",
         "inputs": [
             "App Feature Set"
         ],
@@ -38,7 +38,7 @@
     },
     {
         "name": "LLM - Coding",
-        "details": "Complete the code so that everything will work as a web app. Provide the full code with no placeholders. [output code only] [Respond with no formatting] [don't say anything else]",
+        "details": "Complete the code so that everything will work as a web app. Provide the full code with no placeholders. If the code is pasted on a single html file, it should work as is. [output code only] [Respond with no formatting] [don't say anything else]",
         "inputs": [
             "List of Classes with definitions",
             "UI Design"
