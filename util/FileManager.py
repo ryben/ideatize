@@ -13,8 +13,17 @@ def read_file(filepath: str) -> str:
     return content
 
 
+def read_file_from_workspace(filename: str):
+    filepath = os.path.join(get_workspace_folder(), filename)
+    return read_file(filepath)
+
+
+def get_workspace_folder():
+    return os.path.join(os.getcwd(), "workspace")
+
+
 def write_file(filename: str, content: str):
-    workspace_folder = os.path.join(os.getcwd(), "workspace")
+    workspace_folder = get_workspace_folder()
 
     if not os.path.exists(workspace_folder):
         os.mkdir(workspace_folder)
