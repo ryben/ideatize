@@ -1,0 +1,16 @@
+from skills.BaseTask import BaseTask
+
+
+class WriteToFile(BaseTask):
+    def __init__(self):
+        super().__init__()
+
+    def execute(self, inputs):
+        filepath = inputs['filepath']
+        content = inputs['content']
+
+        f = open(filepath, "w")
+        f.write(content)
+        f.close()
+
+        return filepath
