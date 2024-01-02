@@ -1,5 +1,14 @@
 [
     {
+        "name": "Trending Topics Search",
+        "details": "Generate singular, well-detailed app ideas based on currently trending interests of people \n\nWhen prompted\n- Perform a search online for what's trending on social media based on hashtags, what people are interested in right now\n- Consider also the trends for the current day or week\n- Recommend one idea for an app (a tool, a game, a simulation, an interactive chart) based on what's appropriate to the trend, making sure that it will interest people to try it out\n- The idea can utilize publicly available APIs into the idea\n\nAvoid\n- Controversial subjects such as politics and religion\n- App ideas that are too big, like creating a platform\n\nScope\n- The app idea should be very small in size if implemented, something that can be coded fully by you for quick prototyping\n- Can be a single page static web app, without a backend code since the idea will just be a prototype",
+        "inputs": [
+            "Start Signal"
+        ],
+        "output": "Trending Topics",
+        "script_file": "InternetSearch.py"
+    },
+    {
         "name": "Internet Search",
         "details": "Do an internet search about the following topic: {Prompt}",
         "inputs": [
@@ -28,7 +37,7 @@
     },
     {
         "name": "LLM - Architecture",
-        "details": "Create the architecture of the app based on the app features described, and the UI design provided, by listing down the classes that need to be defined, along with the fields and methods they have. Provide brief documentations/pseudocode as comments on each method as well for easy understanding of developers that will implement them.",
+        "details": "You are a web app architect. You will be given an idea for the app and you provide the architecture.\n\nScope\n- The app static web frontend only. There is no backend code, but you are free to utilize free public APIs in your design\n- You do not provide code, instead you just provide a high level design of the code\n- You determine what objects need to be implemented\n\nWhen provided with an app idea\n- Apply Object Oriented Design principles to design a solution for the app idea\n- You provide the objects that will need to be implemented\n- Design what methods each object has, and just give a pseucode for what they do\n\nFormat of your output\n- Provide the context of the app\n- Provide the high level design of the code\n- List down the objects along with their purposes, their methods and parameters, and their pseudocode\n- Describe in detail the coherence of the objects used to provide the solution for the app.",
         "inputs": [
             "App Feature Set",
             "UI Design"
