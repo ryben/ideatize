@@ -6,8 +6,7 @@ from util.ResourceFactory import ResourceFactory
 def main():
     company = WorkspaceManager().get_company("Calcutech")
     company_manager = CompanyManager(company)
-    resource = ResourceFactory.create_from_file("App Feature Set",
-                                                "2023-12-30 07.51.33 - Perry Scope - App Feature Set.log")
+    resource = ResourceFactory.create("Start Signal", "")
     company_manager.receive_resource(resource)
 
 

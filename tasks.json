@@ -1,25 +1,25 @@
 [
     {
-        "name": "Trending Topics Search",
-        "details": "Generate singular, well-detailed app ideas based on currently trending interests of people \n\nWhen prompted\n- Perform a search online for what's trending on social media based on hashtags, what people are interested in right now\n- Consider also the trends for the current day or week\n- Recommend one idea for an app (a tool, a game, a simulation, an interactive chart) based on what's appropriate to the trend, making sure that it will interest people to try it out\n- The idea can utilize publicly available APIs into the idea\n\nAvoid\n- Controversial subjects such as politics and religion\n- App ideas that are too big, like creating a platform\n\nScope\n- The app idea should be very small in size if implemented, something that can be coded fully by you for quick prototyping\n- Can be a single page static web app, without a backend code since the idea will just be a prototype",
+        "name": "Trending Topic Search",
+        "details": "Search for topics what's currently trending on social media, and select the most popular and interesting one",
         "inputs": [
             "Start Signal"
         ],
-        "output": "Trending Topics",
+        "output": "Trending Topic",
         "script_file": "InternetSearch.py"
     },
     {
-        "name": "Internet Search",
-        "details": "Do an internet search about the following topic: {Prompt}",
+        "name": "Specific Topic Internet Search",
+        "details": "Do a detailed research about the selected topic",
         "inputs": [
-            "Prompt"
+            "Trending Topic"
         ],
         "output": "Researched Topic",
         "script_file": "InternetSearch.py"
     },
     {
         "name": "LLM - App Features Thinking",
-        "details": "Given the following researched topic, think of an app, and define its features. Make it simple - something that can be implemented quickly as a prototype web app: {Researched Topic}",
+        "details": "Given the following researched topic, think of an app, and define its features. Make it simple - something that can be implemented quickly as a prototype web app without a backend: ",
         "inputs": [
             "Researched Topic"
         ],

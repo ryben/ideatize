@@ -3,17 +3,28 @@
         {
             "name": "Calcutech",
             "roles": [
-
                 {
-                    "name": "Researcher",
+                    "name": "Trend Researcher",
                     "inputs": [
-                        "Prompt"
+                        "Start Signal"
+                    ],
+                    "outputs": [
+                        "Trending Topic"
+                    ],
+                    "tasks": [
+                        "Trending Topic Search"
+                    ]
+                },
+                {
+                    "name": "Topic Researcher",
+                    "inputs": [
+                        "Trending Topic"
                     ],
                     "outputs": [
                         "Researched Topic"
                     ],
                     "tasks": [
-                        "Internet Search"
+                        "Specific Topic Internet Search"
                     ]
                 },
                 {
@@ -85,7 +96,11 @@
                         },
                         {
                             "name": "Rita Book",
-                            "role": "Researcher"
+                            "role": "Topic Researcher"
+                        },
+                        {
+                            "name": "Tara Net",
+                            "role": "Trend Researcher"
                         },
                         {
                             "name": "Artie Flow",
