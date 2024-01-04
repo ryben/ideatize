@@ -76,6 +76,19 @@
                     "tasks": [
                         "LLM - Coding"
                     ]
+                },
+                {
+                    "name": "File Writer",
+                    "inputs": [
+                        "App Prototype",
+                        "File Path"
+                    ],
+                    "outputs": [
+                        "Output File Path"
+                    ],
+                    "tasks": [
+                        "File Write"
+                    ]
                 }
             ],
             "projects": [
@@ -105,6 +118,10 @@
                         {
                             "name": "Artie Flow",
                             "role": "UI/UX Designer"
+                        },
+                        {
+                            "name": "Filo Persiste",
+                            "role": "File Writer"
                         }
                     ],
                     "sessions": []

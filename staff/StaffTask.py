@@ -12,11 +12,11 @@ class StaffTask(ResourceCollaborator):
         self.base_task = base_task
 
     def create_output_resources(self, available_resources: list[Resource]) -> list[Resource]:
-        base_task_inputs = {}
+        base_task_inputs = []
 
         # Map resources using input types as keys
         for resource in self.available_resources:
-            base_task_inputs[resource.type] = resource.content
+            base_task_inputs.append(resource.content)
 
         task_output = self.base_task.execute(base_task_inputs)
 

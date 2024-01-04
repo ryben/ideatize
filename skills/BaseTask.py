@@ -10,5 +10,5 @@ class BaseTask:
         self.details = details
 
     @abstractmethod
-    def execute(self, input_obj: dict):
+    def execute(self, input_obj: list):
         pass

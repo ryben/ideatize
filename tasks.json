@@ -54,5 +54,15 @@
         ],
         "output": "App Prototype",
         "script_file": "LLM.py"
+    },
+    {
+        "name": "File Write",
+        "details": "",
+        "inputs": [
+            "File Path",
+            "App Prototype"
+        ],
+        "output": "Output File Path",
+        "script_file": "WriteToFile.py"
     }
 ]

@@ -6,8 +6,8 @@ class WriteToFile(BaseTask):
         super().__init__()
 
     def execute(self, inputs):
-        filepath = inputs['filepath']
-        content = inputs['content']
+        filepath = inputs[0]
+        content = inputs[1]
 
         f = open(filepath, "w")
         f.write(content)
