@@ -1,18 +1,45 @@
 [
     {
-        "name": "Trending Topic Search",
-        "details": "Search for topics what's currently trending on social media, and select the most popular and interesting one",
+        "name": "Trending Topics Search",
+        "details": "List the most current and emerging trends in social media as of 2024, focusing on new technologies, user behaviors, and content preferences.",
         "inputs": [
             "Start Signal"
         ],
-        "output": "Trending Topic",
+        "output": "Topic List",
         "script_file": "InternetSearch.py"
     },
     {
-        "name": "Specific Topic Internet Search",
-        "details": "Do a detailed research about the selected topic",
+        "name": "Trend Topic Focus",
+        "details": "Choose one trend from the list that stands out for its growth potential and relevance to today's users. Explain why this trend is significant and how it's influencing user engagement on social media.",
         "inputs": [
-            "Trending Topic"
+            "Topic List"
+        ],
+        "output": "Focused Topic",
+        "script_file": "InternetSearch.py"
+    },
+    {
+        "name": "User Needs, Market Gap",
+        "details": "Explore the chosen trend to identify specific user needs and gaps in the current market. What are users looking for that they are not currently getting? What problems or frustrations are they facing in this area?",
+        "inputs": [
+            "Focused Topic"
+        ],
+        "output": "Needs and Gap",
+        "script_file": "InternetSearch.py"
+    },
+    {
+        "name": "Conceptualize",
+        "details": "Based on the user needs and market gaps identified, brainstorm a conceptual solution. What kind of app or feature could address these needs? How would it improve the user experience in relation to the chosen trend?",
+        "inputs": [
+            "Needs and Gap"
+        ],
+        "output": "Topic Concept",
+        "script_file": "InternetSearch.py"
+    },
+    {
+        "name": "Refine Concept",
+        "details": "Refine the conceptual solution into a more detailed app idea. Describe the app’s main features, its target audience, and how it differentiates itself from existing solutions. How will it specifically address the trends and user needs identified in the earlier prompts?",
+        "inputs": [
+            "Topic Concept"
         ],
         "output": "Researched Topic",
         "script_file": "InternetSearch.py"
