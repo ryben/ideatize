@@ -44,7 +44,9 @@ class CompanyManager:
         names = []
         for member in staff:
             names.append(member.name)
-        Log.p(f"Project {name} team members: {",".join(names)}")
+
+        names_str = ",".join(names)
+        Log.p(f"Project {name} team members: {names_str}")
 
         project = Project(name, staff, [])
         self.project_managers.append(ProjectManager(project, self.company.roles))

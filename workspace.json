@@ -4,27 +4,19 @@
             "name": "Calcutech",
             "roles": [
                 {
-                    "name": "Trend Researcher",
-                    "inputs": [
-                        "Start Signal"
-                    ],
-                    "outputs": [
-                        "Trending Topic"
-                    ],
-                    "tasks": [
-                        "Trending Topic Search"
-                    ]
-                },
-                {
                     "name": "Topic Researcher",
                     "inputs": [
-                        "Trending Topic"
+                        "Start Signal"
                     ],
                     "outputs": [
                         "Researched Topic"
                     ],
                     "tasks": [
-                        "Specific Topic Internet Search"
+                        "Trending Topics Search",
+                        "Trend Topic Focus",
+                        "User Needs, Market Gap",
+                        "Conceptualize",
+                        "Refine Concept"
                     ]
                 },
                 {
@@ -110,10 +102,6 @@
                         {
                             "name": "Rita Book",
                             "role": "Topic Researcher"
-                        },
-                        {
-                            "name": "Tara Net",
-                            "role": "Trend Researcher"
                         },
                         {
                             "name": "Artie Flow",

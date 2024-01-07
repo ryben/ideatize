@@ -6,9 +6,8 @@ from util.ResourceFactory import ResourceFactory
 def main():
     company = WorkspaceManager().get_company("Calcutech")
     company_manager = CompanyManager(company)
-    resource = ResourceFactory.create("File Path", "output.txt")
-    resource2 = ResourceFactory.create("App Prototype", "Test file content")
-    company_manager.receive_resources([resource, resource2])
+    resource = ResourceFactory.create("Start Signal", "Go")
+    company_manager.receive_resources([resource])
 
 
 main()

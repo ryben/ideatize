@@ -22,7 +22,7 @@ class LLM(BaseTask):
         # Step 2: Create a Thread
         my_thread = client.beta.threads.create()
 
-        input_values = "\n\n".join(list(inputs.values()))
+        input_values = "\n\n".join(inputs)
 
         print(f"Entering inputs: {input_values}")
 

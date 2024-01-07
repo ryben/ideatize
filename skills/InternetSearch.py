@@ -51,9 +51,6 @@ class InternetSearch(BaseTask):
         print(f"Thread: {thread}")
 
         user_input = self.details
-        input_key = list(inputs.keys())[0]
-        input_value = list(inputs.values())[0]
-        user_input = user_input.replace("{" + input_key + "}", input_value)
         print(f"Instructions: {user_input}")
 
         # Create a message
@@ -92,10 +89,18 @@ class InternetSearch(BaseTask):
 
     # Function to wait for a run to complete
     def wait_for_run_completion(self, thread_id, run_id):
+        prev_run_status = ""
+
         while True:
             time.sleep(1)
             run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)
-            print(f"Current run status: {run.status}")
+
+            if prev_run_status != run.status:
+                prev_run_status = run.status
+                print(f"Run status: {prev_run_status} ", end=" ")
+            else:
+                print(f".", end="")
+
             if run.status in ['completed', 'failed', 'requires_action']:
                 return run
 
@@ -133,4 +138,3 @@ class InternetSearch(BaseTask):
         for msg in messages:
             output = f"{output}\n{msg.role}: {msg.content[0].text.value}"
         return output
-
